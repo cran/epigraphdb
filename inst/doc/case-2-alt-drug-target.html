@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Case study 2: Identification of potential drug targets</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Case study 2: Identification of potential drug targets</h1>
+
+
+
+<p>This RMarkdown document demonstrates how key elements from the <a href="https://github.com/MRCIEU/epigraphdb/blob/master/paper-case-studies/case-2-alt-drug-target.ipynb">notebook for case study 2 in the EpiGraphDB paper</a> can be achieved using the R package. For detailed explanations of the case study please refer to the <a href="#">paper</a> or the <a href="https://github.com/MRCIEU/epigraphdb/blob/master/paper-case-studies/case-2-alt-drug-target.ipynb">case study notebook</a>.</p>
+<div id="context" class="section level2">
+<h2>Context</h2>
+<p>Systematic MR of molecular phenotypes such as proteins and expression of transcript levels offer enormous potential to prioritise drug targets for further investigation. However, many genes and gene products are not easily druggable, so some potentially important causal genes may not offer an obvious route to intervention.</p>
+<p>A parallel problem is that current GWASes of molecular phenotypes have limited sample sizes and limited protein coverages. A potential way to address both these problems is to use protein-protein interaction information to identify druggable targets which are linked to a non-druggable, but robustly causal target. Their relationship to the causal target increases our confidence in their potential causal role even if the initial evidence of effect is below our multiple-testing threshold.</p>
+<p>Here in case study 2 we demonstrate an approach to use data in EpiGraphDB to prioritise potential alternative drug targets in the same PPI network, as follows:</p>
+<ul>
+<li>For an existing drug target of interests, we use PPI networks to search for its directly interacting genes that are evidenced to be druggable.</li>
+<li>We then examine the causal evidence of these candidate genes on the disease.</li>
+<li>We also examine the literature evidence of these candidate genes on the disease.</li>
+</ul>
+<p>The triangulation of MR evidence and literature evidence as available from EpiGraphDB regarding these candidate genes will greatly enhance our confidence in identifying potential viable drug targets.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;purrr&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;glue&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;epigraphdb&quot;</span>)</span></code></pre></div>
+<p>Here we configure the parameters used in the case study example. We illustrate this approach using IL23R, an established drug target for inflammatory bowel disease (IBD) (Duerr et al., 2006; Momozawa et al., 2011).</p>
+<p>While specific IL23R interventions are still undergoing trials, there is a possibility that these therapies may not be effective for all or even the majority of patients. This case study therefore explores potential alternative drug targets.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>GENE_NAME &lt;-<span class="st"> &quot;IL23R&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>OUTCOME_TRAIT &lt;-<span class="st"> &quot;Inflammatory bowel disease&quot;</span></span></code></pre></div>
+</div>
+<div id="using-ppi-networks-for-alternative-drug-targets-search" class="section level2">
+<h2>Using PPI networks for alternative drug targets search</h2>
+<p>The assumption here is that the most likely alternative targets are either directly interacting with IL23R or somewhere in the same PPI network. In this example, we consider only genes that were found to interact with IL23R via direct protein-protein interactions, and require that those <strong>interacting proteins</strong> should also be <strong>druggable</strong>.</p>
+<p>The thousands of genes are classified with regard to their druggability by Finan et al. 2017, where the <strong>Tier 1</strong> category refers to approved drugs or those in clinical testing while for other tier categories the druggability confidence drops in order <strong>Tier 2</strong> and then <strong>Tier 3</strong>.</p>
+<p>Here we use the <a href="https://docs.epigraphdb.org/api/api-endpoints/#get-genedruggabilityppi">GET /gene/druggability/ppi</a> endpoint to get data on the druggable alternative genes.**</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>get_drug_targets_ppi &lt;-<span class="st"> </span><span class="cf">function</span>(gene_name) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>  endpoint &lt;-<span class="st"> &quot;/gene/druggability/ppi&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>  params &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">gene_name =</span> gene_name)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>  df &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(<span class="dt">route =</span> endpoint, <span class="dt">params =</span> params, <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>  df</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>}</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>ppi_df &lt;-<span class="st"> </span><span class="kw">get_drug_targets_ppi</span>(<span class="dt">gene_name =</span> GENE_NAME)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>ppi_df</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 42 x 5</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">#&gt;    g1.name p1.uniprot_id p2.uniprot_id g2.name g2.druggability_tier</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;               </span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a><span class="co">#&gt;  1 IL23R   Q5VWK5        P04141        CSF2    Tier 1              </span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a><span class="co">#&gt;  2 IL23R   Q5VWK5        P01562        IFNA1   Tier 1              </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a><span class="co">#&gt;  3 IL23R   Q5VWK5        P01579        IFNG    Tier 1              </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a><span class="co">#&gt;  4 IL23R   Q5VWK5        P22301        IL10    Tier 1              </span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a><span class="co">#&gt;  5 IL23R   Q5VWK5        P29460        IL12B   Tier 1              </span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a><span class="co">#&gt;  6 IL23R   Q5VWK5        P42701        IL12RB1 Tier 1              </span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a><span class="co">#&gt;  7 IL23R   Q5VWK5        P35225        IL13    Tier 1              </span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a><span class="co">#&gt;  8 IL23R   Q5VWK5        P40933        IL15    Tier 1              </span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a><span class="co">#&gt;  9 IL23R   Q5VWK5        Q16552        IL17A   Tier 1              </span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a><span class="co">#&gt; 10 IL23R   Q5VWK5        Q96PD4        IL17F   Tier 1              </span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a><span class="co">#&gt; # … with 32 more rows</span></span></code></pre></div>
+<p>For further analysis we select the gene of interest (IL23R) as well as its interacting genes with Tier 1 druggability.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>get_gene_list &lt;-<span class="st"> </span><span class="cf">function</span>(ppi_df, <span class="dt">include_primary_gene =</span> <span class="ot">TRUE</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>  <span class="cf">if</span> (include_primary_gene) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>    gene_list &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>      ppi_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">g1.name</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unique</span>(),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>      ppi_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">g2.druggability_tier</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;Tier 1&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">g2.name</span><span class="st">`</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>    )</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>  } <span class="cf">else</span> {</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>    gene_list &lt;-<span class="st"> </span>ppi_df <span class="op">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="st">      </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">g2.druggability_tier</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;Tier 1&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="st">      </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">g2.name</span><span class="st">`</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>  }</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>  gene_list</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>}</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a>gene_list &lt;-<span class="st"> </span><span class="kw">get_gene_list</span>(ppi_df)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>gene_list</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="co">#&gt;  [1] &quot;IL23R&quot;   &quot;CSF2&quot;    &quot;IFNA1&quot;   &quot;IFNG&quot;    &quot;IL10&quot;    &quot;IL12B&quot;   &quot;IL12RB1&quot;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a><span class="co">#&gt;  [8] &quot;IL13&quot;    &quot;IL15&quot;    &quot;IL17A&quot;   &quot;IL17F&quot;   &quot;IL2&quot;     &quot;IL22&quot;    &quot;IL23A&quot;  </span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a><span class="co">#&gt; [15] &quot;IL4&quot;     &quot;IL5&quot;     &quot;IL6&quot;     &quot;IL9&quot;     &quot;JAK1&quot;    &quot;JAK2&quot;    &quot;NFKB1&quot;  </span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a><span class="co">#&gt; [22] &quot;PIK3CA&quot;  &quot;RORC&quot;    &quot;STAT3&quot;   &quot;TSLP&quot;    &quot;TYK2&quot;</span></span></code></pre></div>
+</div>
+<div id="using-mendelian-randomization-results-for-causal-effect-estimation" class="section level2">
+<h2>Using Mendelian randomization results for causal effect estimation</h2>
+<p>The next step is to find out whether any of these genes have a comparable and statistically plausible effect on IBD.</p>
+<p>Here we search EpiGraphDB for the Mendelian randomization (MR) results for these genes and IBD from the recent study by Zheng et al, 2019 (<a href="https://epigraphdb.org/xqtl/" class="uri">https://epigraphdb.org/xqtl/</a>) via the <a href="https://docs.epigraphdb.org/api/api-endpoints/#get-xqtlsingle-snp-mr">GET /xqtl/single-snp-mr</a> endpoint.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>extract_mr &lt;-<span class="st"> </span><span class="cf">function</span>(outcome_trait, gene_list, qtl_type) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>  endpoint &lt;-<span class="st"> &quot;/xqtl/single-snp-mr&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>  per_gene &lt;-<span class="st"> </span><span class="cf">function</span>(gene_name) {</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>    params &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>      <span class="dt">exposure_gene =</span> gene_name,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>      <span class="dt">outcome_trait =</span> outcome_trait,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>      <span class="dt">qtl_type =</span> qtl_type,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>      <span class="dt">pval_threshold =</span> <span class="fl">1e-5</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>    )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>    df &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(<span class="dt">route =</span> endpoint, <span class="dt">params =</span> params, <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a>    df</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a>  }</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a>  res_df &lt;-<span class="st"> </span>gene_list <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_df</span>(per_gene)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a>  res_df</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a>}</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a>xqtl_df &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pQTL&quot;</span>, <span class="st">&quot;eQTL&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_df</span>(<span class="cf">function</span>(qtl_type) {</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a>  <span class="kw">extract_mr</span>(</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a>    <span class="dt">outcome_trait =</span> OUTCOME_TRAIT,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true"></a>    <span class="dt">gene_list =</span> gene_list,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true"></a>    <span class="dt">qtl_type =</span> qtl_type</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true"></a>  ) <span class="op">%&gt;%</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">qtl_type =</span> qtl_type)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true"></a>})</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true"></a>xqtl_df</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 9 x 9</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true"></a><span class="co">#&gt;   gene.ensembl_id gene.name gwas.id gwas.trait r.beta   r.se      r.p r.rsid</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; </span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true"></a><span class="co">#&gt; 1 ENSG00000162594 IL23R     ieu-a-… Inflammat…  1.50  0.0546 0.       rs115…</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true"></a><span class="co">#&gt; 2 ENSG00000113302 IL12B     ieu-a-… Inflammat…  0.418 0.0345 9.59e-34 rs492…</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true"></a><span class="co">#&gt; 3 ENSG00000162594 IL23R     ieu-a-… Inflammat…  0.887 0.0644 4.16e-43 rs206…</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true"></a><span class="co">#&gt; 4 ENSG00000164136 IL15      ieu-a-… Inflammat… -1.42  0.197  5.53e-13 rs753…</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true"></a><span class="co">#&gt; 5 ENSG00000113520 IL4       ieu-a-… Inflammat…  0.460 0.0840 4.47e- 8 rs207…</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true"></a><span class="co">#&gt; 6 ENSG00000096968 JAK2      ieu-a-… Inflammat… -1.90  0.204  1.32e-20 rs478…</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true"></a><span class="co">#&gt; 7 ENSG00000109320 NFKB1     ieu-a-… Inflammat…  0.974 0.174  2.16e- 8 rs476…</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true"></a><span class="co">#&gt; 8 ENSG00000143365 RORC      ieu-a-… Inflammat… -0.995 0.116  1.21e-17 rs484…</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true"></a><span class="co">#&gt; 9 ENSG00000168610 STAT3     ieu-a-… Inflammat…  0.597 0.0757 2.96e-15 rs105…</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true"></a><span class="co">#&gt; # … with 1 more variable: qtl_type &lt;chr&gt;</span></span></code></pre></div>
+</div>
+<div id="using-literature-evidence-for-results-enrichment-and-triangulation" class="section level2">
+<h2>Using literature evidence for results enrichment and triangulation</h2>
+<p>Can we find evidence in the literature where these genes are found to be associated with IBD to increase our level of confidence in MR results or to provide alternative evidence where MR results to not exist?</p>
+<p>We can use the <a href="https://docs.epigraphdb.org/api/api-endpoints/#get-geneliterature">GET /gene/literature</a> endpoint to get data on the literature evidence for the set of genes.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>extract_literature &lt;-<span class="st"> </span><span class="cf">function</span>(outcome_trait, gene_list) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>  per_gene &lt;-<span class="st"> </span><span class="cf">function</span>(gene_name) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>    endpoint &lt;-<span class="st"> &quot;/gene/literature&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>    params &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>      <span class="dt">gene_name =</span> gene_name,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>      <span class="dt">object_name =</span> outcome_trait <span class="op">%&gt;%</span><span class="st"> </span>stringr<span class="op">::</span><span class="kw">str_to_lower</span>()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>    )</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>    df &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(<span class="dt">route =</span> endpoint, <span class="dt">params =</span> params, <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a>    df</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a>  }</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a>  res_df &lt;-<span class="st"> </span>gene_list <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_df</span>(per_gene)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a>  res_df <span class="op">%&gt;%</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">literature_count =</span> <span class="kw">map_int</span>(pubmed_id, <span class="cf">function</span>(x) <span class="kw">length</span>(x)))</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a>}</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true"></a>literature_df &lt;-<span class="st"> </span><span class="kw">extract_literature</span>(</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true"></a>  <span class="dt">outcome_trait =</span> OUTCOME_TRAIT,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true"></a>  <span class="dt">gene_list =</span> gene_list</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true"></a>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true"></a>literature_df</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 45 x 5</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true"></a><span class="co">#&gt;    pubmed_id  gene.name st.predicate     st.object_name         literature_count</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true"></a><span class="co">#&gt;    &lt;list&gt;     &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;                             &lt;int&gt;</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true"></a><span class="co">#&gt;  1 &lt;chr [2]&gt;  IL23R     NEG_ASSOCIATED_… Inflammatory Bowel Di…                2</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true"></a><span class="co">#&gt;  2 &lt;chr [1]&gt;  IL23R     AFFECTS          Inflammatory Bowel Di…                1</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true"></a><span class="co">#&gt;  3 &lt;chr [21]&gt; IL23R     ASSOCIATED_WITH  Inflammatory Bowel Di…               21</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true"></a><span class="co">#&gt;  4 &lt;chr [1]&gt;  IL23R     PREDISPOSES      Inflammatory Bowel Di…                1</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true"></a><span class="co">#&gt;  5 &lt;chr [2]&gt;  CSF2      ASSOCIATED_WITH  Inflammatory Bowel Di…                2</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true"></a><span class="co">#&gt;  6 &lt;chr [1]&gt;  CSF2      AFFECTS          Inflammatory Bowel Di…                1</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true"></a><span class="co">#&gt;  7 &lt;chr [3]&gt;  IFNA1     ASSOCIATED_WITH  Inflammatory Bowel Di…                3</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true"></a><span class="co">#&gt;  8 &lt;chr [1]&gt;  IFNA1     PREVENTS         Inflammatory Bowel Di…                1</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true"></a><span class="co">#&gt;  9 &lt;chr [2]&gt;  IFNG      ASSOCIATED_WITH  Inflammatory Bowel Di…                2</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true"></a><span class="co">#&gt; 10 &lt;chr [1]&gt;  IFNG      AFFECTS          Inflammatory Bowel Di…                1</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true"></a><span class="co">#&gt; # … with 35 more rows</span></span></code></pre></div>
+</div>
+<div id="sessioninfo" class="section level2">
+<h2><code>sessionInfo</code></h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">sessionInfo</span>()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="co">#&gt; R version 4.0.2 (2020-06-22)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="co">#&gt; Running under: Manjaro Linux</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="co">#&gt; BLAS:   /usr/lib/libblas.so.3.9.0</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="co">#&gt; LAPACK: /usr/lib/liblapack.so.3.9.0</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="co">#&gt; locale:</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="co">#&gt;  [1] LC_CTYPE=en_GB.UTF-8       LC_NUMERIC=C              </span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="co">#&gt;  [3] LC_TIME=en_GB.UTF-8        LC_COLLATE=C              </span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="co">#&gt;  [5] LC_MONETARY=en_GB.UTF-8    LC_MESSAGES=en_GB.UTF-8   </span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="co">#&gt;  [7] LC_PAPER=en_GB.UTF-8       LC_NAME=C                 </span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a><span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="co">#&gt; [11] LC_MEASUREMENT=en_GB.UTF-8 LC_IDENTIFICATION=C       </span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a><span class="co">#&gt; attached base packages:</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true"></a><span class="co">#&gt; other attached packages:</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true"></a><span class="co">#&gt; [1] epigraphdb_0.2.1 igraph_1.2.5     glue_1.4.1       purrr_0.3.4     </span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true"></a><span class="co">#&gt; [5] dplyr_1.0.2      magrittr_1.5    </span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true"></a><span class="co">#&gt;  [1] Rcpp_1.0.4.6     knitr_1.28       tidyselect_1.1.0 R6_2.4.1        </span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true"></a><span class="co">#&gt;  [5] rlang_0.4.7      fansi_0.4.1      stringr_1.4.0    httr_1.4.2      </span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true"></a><span class="co">#&gt;  [9] tools_4.0.2      xfun_0.14        utf8_1.1.4       cli_2.0.2       </span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true"></a><span class="co">#&gt; [13] gtools_3.8.2     htmltools_0.4.0  ellipsis_0.3.1   assertthat_0.2.1</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true"></a><span class="co">#&gt; [17] yaml_2.2.1       digest_0.6.25    tibble_3.0.3     lifecycle_0.2.0 </span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true"></a><span class="co">#&gt; [21] crayon_1.3.4     vctrs_0.3.2      curl_4.3         evaluate_0.14   </span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true"></a><span class="co">#&gt; [25] rmarkdown_2.1    stringi_1.4.6    compiler_4.0.2   pillar_1.4.6    </span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true"></a><span class="co">#&gt; [29] generics_0.0.2   jsonlite_1.7.0   pkgconfig_2.0.3</span></span></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

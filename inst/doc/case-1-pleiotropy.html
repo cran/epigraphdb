@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Case study 1: Distinguishing vertical and horizontal pleiotropy for SNP-protein associations</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Case study 1: Distinguishing vertical and horizontal pleiotropy for SNP-protein associations</h1>
+
+
+
+<p>This RMarkdown document demonstrates how key elements from the <a href="https://github.com/MRCIEU/epigraphdb/blob/master/paper-case-studies/case-1-pleiotropy.ipynb">notebook for case study 1 in the EpiGraphDB paper</a> can be achieved using the R package. For detailed explanations of the case study please refer to the <a href="#">paper</a> or the <a href="https://github.com/MRCIEU/epigraphdb/blob/master/paper-case-studies/case-1-pleiotropy.ipynb">case study notebook</a>.</p>
+<div id="context" class="section level2">
+<h2>Context</h2>
+<p>Mendelian randomization (MR), a technique to evaluate the causal role of modifiable exposures on a health outcome using a set of genetic instruments, tacitly assumes that a genetic variant (e.g. SNP) is only related to an outcome of interest through an exposure (i.e. the “exclusion restriction criterion”). Horizontal pleiotropy, where a SNP is associated with multiple phenotypes independently of the exposure of interest, potentially violates this assumption delivering misleading conclusions. In contrast, vertical pleiotropy, where a SNP is associated with multiple phenotypes on the same biological pathway, does not violate this assumption.</p>
+<p>Here, we use external evidence on biological pathways and protein-protein interactions to assess the pleiotropic profile for a genetic variant based on the genes (and proteins) with which that variant is associated. In a graph representation, we will show that:</p>
+<ul>
+<li>We have evidence of potential <strong>vertical</strong> pleiotropy when the proteins associated with a variant belong to one connected group,</li>
+<li>In contrast, if the proteins associated with a single variant are isolated from each other, this suggests evidence of <strong>horizontal</strong> pleiotropy.</li>
+</ul>
+<p>This case study goes as follows:</p>
+<ul>
+<li>For a list of genes that we wish to assess their pleiotropic profiles (against a variant of interests), we retrieve from EpiGraphDB their mapped protein products.</li>
+<li>Then respectively from the evidence on shared pathway network and protein-protein interaction network, we can extract the proteins groups formed in these networks as connected communities to assess the pleiotropic profiles of the genes.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="co">#&gt; Attaching package: &#39;dplyr&#39;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="co">#&gt;     filter, lag</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;purrr&quot;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="co">#&gt; Attaching package: &#39;purrr&#39;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="co">#&gt; The following object is masked from &#39;package:magrittr&#39;:</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a><span class="co">#&gt;     set_names</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;glue&quot;</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a><span class="co">#&gt; Attaching package: &#39;glue&#39;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a><span class="co">#&gt; The following object is masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a><span class="co">#&gt;     collapse</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;igraph&quot;</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a><span class="co">#&gt; Attaching package: &#39;igraph&#39;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a><span class="co">#&gt; The following objects are masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a><span class="co">#&gt;     compose, simplify</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a><span class="co">#&gt; The following objects are masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a><span class="co">#&gt;     as_data_frame, groups, union</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a><span class="co">#&gt;     decompose, spectrum</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a><span class="co">#&gt; The following object is masked from &#39;package:base&#39;:</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a><span class="co">#&gt;     union</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;epigraphdb&quot;</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true"></a><span class="co">#&gt;     EpiGraphDB v0.3 (API: https://api.epigraphdb.org)</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true"></a><span class="co">#&gt; </span></span></code></pre></div>
+<p>Here we configure the parameters used in the case study example. In this example we will look at the variant <strong>rs12720356</strong>, a SNP located in chromosome 19 that has been associated with Crohn’s disease and psoriasis.**</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>SNP &lt;-<span class="st"> &quot;rs12720356&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>GENELIST &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ZGLP1&quot;</span>, <span class="st">&quot;FDX1L&quot;</span>, <span class="st">&quot;MRPL4&quot;</span>, <span class="st">&quot;ICAM5&quot;</span>, <span class="st">&quot;TYK2&quot;</span>, <span class="st">&quot;GRAP2&quot;</span>, <span class="st">&quot;KRI1&quot;</span>, <span class="st">&quot;TMED1&quot;</span>, <span class="st">&quot;ICAM1&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>PPI_N_INTERMEDIATE_PROTEINS &lt;-<span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+</div>
+<div id="mapping-genes-to-proteins" class="section level2">
+<h2>Mapping genes to proteins</h2>
+<p>The first step of the analysis is to map each of these genes to their protein product.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>get_gene_protein &lt;-<span class="st"> </span><span class="cf">function</span>(genelist) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>  endpoint &lt;-<span class="st"> &quot;/mappings/gene-to-protein&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>  params &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    <span class="dt">gene_name_list =</span> genelist <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">I</span>()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>  )</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>  r &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>    <span class="dt">route =</span> endpoint,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>    <span class="dt">params =</span> params,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>    <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>    <span class="dt">method =</span> <span class="st">&quot;POST&quot;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>  )</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>  protein_df &lt;-<span class="st"> </span>r</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a>  <span class="cf">if</span> (<span class="kw">nrow</span>(protein_df) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a>    res_df &lt;-<span class="st"> </span>protein_df <span class="op">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a><span class="st">      </span><span class="kw">select</span>(<span class="dt">protein_name =</span> <span class="st">`</span><span class="dt">gene.name</span><span class="st">`</span>, <span class="dt">uniprot_id =</span> <span class="st">`</span><span class="dt">protein.uniprot_id</span><span class="st">`</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a>  } <span class="cf">else</span> {</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a>    res_df &lt;-<span class="st"> </span><span class="kw">tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">set_names</span>(<span class="kw">c</span>(<span class="st">&quot;protein_name&quot;</span>, <span class="st">&quot;uniprot_id&quot;</span>))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a>  }</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a>  res_df</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a>}</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a>gene_protein_df &lt;-<span class="st"> </span><span class="kw">get_gene_protein</span>(<span class="dt">genelist =</span> GENELIST)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true"></a>gene_protein_df</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 9 x 2</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true"></a><span class="co">#&gt;   protein_name uniprot_id</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;     </span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true"></a><span class="co">#&gt; 1 TMED1        Q13445    </span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true"></a><span class="co">#&gt; 2 MRPL4        Q9BYD3    </span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true"></a><span class="co">#&gt; 3 TYK2         P29597    </span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true"></a><span class="co">#&gt; 4 KRI1         Q8N9T8    </span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true"></a><span class="co">#&gt; 5 FDX1L        Q6P4F2    </span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true"></a><span class="co">#&gt; 6 GRAP2        O75791    </span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true"></a><span class="co">#&gt; 7 ICAM1        P05362    </span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true"></a><span class="co">#&gt; 8 ICAM5        Q9UMF0    </span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true"></a><span class="co">#&gt; 9 ZGLP1        P0C6A0</span></span></code></pre></div>
+</div>
+<div id="identifying-the-involvement-in-the-same-biological-pathways" class="section level2">
+<h2>Identifying the involvement in the same biological pathways</h2>
+<p>For each protein we retrieve the pathways they are involved in.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>get_protein_pathway &lt;-<span class="st"> </span><span class="cf">function</span>(gene_protein_df) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>  endpoint &lt;-<span class="st"> &quot;/protein/in-pathway&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>  params &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>    <span class="dt">uniprot_id_list =</span> gene_protein_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">uniprot_id</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">I</span>()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>  )</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>  df &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(<span class="dt">route =</span> endpoint, <span class="dt">params =</span> params, <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;POST&quot;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>  <span class="cf">if</span> (<span class="kw">nrow</span>(df) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>    res_df &lt;-<span class="st"> </span>gene_protein_df <span class="op">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="st">      </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">uniprot_id</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a><span class="st">      </span><span class="kw">left_join</span>(df, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;uniprot_id&quot;</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>  } <span class="cf">else</span> {</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>    res_df &lt;-<span class="st"> </span>gene_protein_df <span class="op">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a><span class="st">      </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">uniprot_id</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a><span class="st">      </span><span class="kw">mutate</span>(<span class="dt">pathway_count =</span> <span class="ot">NA_integer_</span>, <span class="dt">pathway_reactome_id =</span> <span class="ot">NA_character_</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>  }</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a>  res_df &lt;-<span class="st"> </span>res_df <span class="op">%&gt;%</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>      <span class="dt">pathway_count =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(pathway_count), 0L, <span class="kw">as.integer</span>(pathway_count)),</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a>      <span class="dt">pathway_reactome_id =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(pathway_reactome_id), <span class="kw">c</span>(), pathway_reactome_id)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a>    )</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a>  res_df</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a>}</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a>pathway_df &lt;-<span class="st"> </span><span class="kw">get_protein_pathway</span>(<span class="dt">gene_protein_df =</span> gene_protein_df)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true"></a>pathway_df</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 9 x 3</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true"></a><span class="co">#&gt;   uniprot_id pathway_count pathway_reactome_id</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;              &lt;int&gt; &lt;list&gt;             </span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true"></a><span class="co">#&gt; 1 Q13445                 0 &lt;NULL&gt;             </span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true"></a><span class="co">#&gt; 2 Q9BYD3                 0 &lt;NULL&gt;             </span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true"></a><span class="co">#&gt; 3 P29597                 3 &lt;chr [3]&gt;          </span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true"></a><span class="co">#&gt; 4 Q8N9T8                 0 &lt;NULL&gt;             </span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true"></a><span class="co">#&gt; 5 Q6P4F2                 1 &lt;chr [1]&gt;          </span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true"></a><span class="co">#&gt; 6 O75791                 3 &lt;chr [3]&gt;          </span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true"></a><span class="co">#&gt; 7 P05362                 5 &lt;chr [5]&gt;          </span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true"></a><span class="co">#&gt; 8 Q9UMF0                 2 &lt;chr [2]&gt;          </span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true"></a><span class="co">#&gt; 9 P0C6A0                 0 &lt;NULL&gt;</span></span></code></pre></div>
+<p>Now for each pair of proteins we match the pathways they have in common.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>get_shared_pathway &lt;-<span class="st"> </span><span class="cf">function</span>(pathway_df) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>  <span class="co"># For the protein-pathway data</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>  <span class="co"># Get protein-protein permutations where they share pathways</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>  per_permutation &lt;-<span class="st"> </span><span class="cf">function</span>(pathway_df, permutation) {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>    df &lt;-<span class="st"> </span>pathway_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(uniprot_id <span class="op">%in%</span><span class="st"> </span>permutation)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>    primary_pathway &lt;-<span class="st"> </span>pathway_df <span class="op">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="st">      </span><span class="kw">filter</span>(uniprot_id <span class="op">==</span><span class="st"> </span>permutation[<span class="dv">1</span>]) <span class="op">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="st">      </span><span class="kw">pull</span>(pathway_reactome_id) <span class="op">%&gt;%</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="st">      </span><span class="kw">unlist</span>()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a>    assoc_pathway &lt;-<span class="st"> </span>pathway_df <span class="op">%&gt;%</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a><span class="st">      </span><span class="kw">filter</span>(uniprot_id <span class="op">==</span><span class="st"> </span>permutation[<span class="dv">2</span>]) <span class="op">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="st">      </span><span class="kw">pull</span>(pathway_reactome_id) <span class="op">%&gt;%</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a><span class="st">      </span><span class="kw">unlist</span>()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a>    <span class="kw">intersect</span>(primary_pathway, assoc_pathway)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a>  }</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a>  pairwise_permutations &lt;-<span class="st"> </span>pathway_df <span class="op">%&gt;%</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a><span class="st">    </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">uniprot_id</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true"></a><span class="st">    </span>gtools<span class="op">::</span><span class="kw">permutations</span>(<span class="dt">n =</span> <span class="kw">length</span>(.), <span class="dt">r =</span> <span class="dv">2</span>, <span class="dt">v =</span> .)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true"></a>  shared_pathway_df &lt;-<span class="st"> </span><span class="kw">tibble</span>(</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true"></a>    <span class="dt">protein =</span> pairwise_permutations[, <span class="dv">1</span>],</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true"></a>    <span class="dt">assoc_protein =</span> pairwise_permutations[, <span class="dv">2</span>]</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true"></a>  ) <span class="op">%&gt;%</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true"></a>      <span class="dt">shared_pathway =</span> <span class="kw">map2</span>(<span class="st">`</span><span class="dt">protein</span><span class="st">`</span>, <span class="st">`</span><span class="dt">assoc_protein</span><span class="st">`</span>, <span class="cf">function</span>(x, y) {</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true"></a>        <span class="kw">per_permutation</span>(<span class="dt">pathway_df =</span> pathway_df, <span class="dt">permutation =</span> <span class="kw">c</span>(x, y))</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true"></a>      }),</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true"></a>      <span class="dt">combination =</span> <span class="kw">map2_chr</span>(<span class="st">`</span><span class="dt">protein</span><span class="st">`</span>, <span class="st">`</span><span class="dt">assoc_protein</span><span class="st">`</span>, <span class="cf">function</span>(x, y) {</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true"></a>        comb &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">c</span>(x, y))</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true"></a>        <span class="kw">paste</span>(comb, <span class="dt">collapse =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true"></a>      }),</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true"></a>      <span class="dt">count =</span> <span class="kw">map_int</span>(<span class="st">`</span><span class="dt">shared_pathway</span><span class="st">`</span>, <span class="cf">function</span>(x) <span class="kw">na.omit</span>(x) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">length</span>()),</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true"></a>      <span class="dt">connected =</span> count <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true"></a>    )</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true"></a>  shared_pathway_df</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true"></a>}</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true"></a>shared_pathway_df &lt;-<span class="st"> </span><span class="kw">get_shared_pathway</span>(pathway_df)</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true"></a>n_pairs &lt;-<span class="st"> </span><span class="kw">length</span>(shared_pathway_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(count <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true"></a><span class="kw">print</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;Num. shared_pathway pairs: {n_pairs}&quot;</span>))</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true"></a><span class="co">#&gt; Num. shared_pathway pairs: 6</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true"></a>shared_pathway_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 72 x 6</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true"></a><span class="co">#&gt;    protein assoc_protein shared_pathway combination   count connected</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;list&gt;         &lt;chr&gt;         &lt;int&gt; &lt;lgl&gt;    </span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true"></a><span class="co">#&gt;  1 P05362  Q9UMF0        &lt;chr [2]&gt;      P05362,Q9UMF0     2 TRUE     </span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true"></a><span class="co">#&gt;  2 Q9UMF0  P05362        &lt;chr [2]&gt;      P05362,Q9UMF0     2 TRUE     </span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true"></a><span class="co">#&gt;  3 P05362  P29597        &lt;chr [1]&gt;      P05362,P29597     1 TRUE     </span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true"></a><span class="co">#&gt;  4 P29597  P05362        &lt;chr [1]&gt;      P05362,P29597     1 TRUE     </span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true"></a><span class="co">#&gt;  5 O75791  P05362        &lt;chr [0]&gt;      O75791,P05362     0 FALSE    </span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true"></a><span class="co">#&gt;  6 O75791  P0C6A0        &lt;NULL&gt;         O75791,P0C6A0     0 FALSE    </span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true"></a><span class="co">#&gt;  7 O75791  P29597        &lt;chr [0]&gt;      O75791,P29597     0 FALSE    </span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true"></a><span class="co">#&gt;  8 O75791  Q13445        &lt;NULL&gt;         O75791,Q13445     0 FALSE    </span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true"></a><span class="co">#&gt;  9 O75791  Q6P4F2        &lt;chr [0]&gt;      O75791,Q6P4F2     0 FALSE    </span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true"></a><span class="co">#&gt; 10 O75791  Q8N9T8        &lt;NULL&gt;         O75791,Q8N9T8     0 FALSE    </span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true"></a><span class="co">#&gt; # … with 62 more rows</span></span></code></pre></div>
+<p>We can further query EpiGraphDB regarding the detailed pathway information using <code>GET /meta/nodes/Pathway/search</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>get_pathway_info &lt;-<span class="st"> </span><span class="cf">function</span>(reactome_id) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>  endpoint &lt;-<span class="st"> &quot;/meta/nodes/Pathway/search&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>  params &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">id =</span> reactome_id)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>  df &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(<span class="dt">route =</span> endpoint, <span class="dt">params =</span> params, <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>  df</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>}</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>pathway &lt;-<span class="st"> </span>shared_pathway_df <span class="op">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">pull</span>(shared_pathway) <span class="op">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">unlist</span>() <span class="op">%&gt;%</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">unique</span>()</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a>pathway_info &lt;-<span class="st"> </span>pathway <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_df</span>(get_pathway_info)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a>pathway_info <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">print</span>()</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true"></a><span class="co">#&gt;   node.in_disease node.name                                     node.reactome_id</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                                         &lt;chr&gt;           </span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true"></a><span class="co">#&gt; 1 FALSE           Interleukin-4 and Interleukin-13 signaling    R-HSA-6785807   </span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true"></a><span class="co">#&gt; 2 FALSE           Integrin cell surface interactions            R-HSA-216083    </span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true"></a><span class="co">#&gt; 3 FALSE           Immunoregulatory interactions between a Lymp… R-HSA-198933</span></span></code></pre></div>
+<p>In order to extract protein groups from the shared pathways, the last step for this query is to convert the shared pathway data into a graph where</p>
+<ul>
+<li>Proteins are represented as nodes.</li>
+<li>And shared pathways are represented as edges.</li>
+<li>Then the protein groups (via shared pathways) are the connected communities in the graph.</li>
+</ul>
+<p>We then count the number of nodes in each connected community and plot the graph.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>protein_df_to_graph &lt;-<span class="st"> </span><span class="cf">function</span>(df) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>  df_connected &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(connected) <span class="op">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">distinct</span>(<span class="st">`</span><span class="dt">combination</span><span class="st">`</span>, <span class="dt">.keep_all =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>  nodes &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="st">    </span><span class="kw">pull</span>(protein) <span class="op">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="st">    </span><span class="kw">unique</span>()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>  graph &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a>    df_connected,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a>    <span class="dt">directed =</span> <span class="ot">FALSE</span>, <span class="dt">vertices =</span> nodes</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a>  )</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a>  graph<span class="op">$</span>layout &lt;-<span class="st"> </span>igraph<span class="op">::</span>layout_with_kk</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a>  graph</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a>}</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a>graph_to_protein_groups &lt;-<span class="st"> </span><span class="cf">function</span>(graph) {</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a>  graph <span class="op">%&gt;%</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a><span class="st">    </span>igraph<span class="op">::</span><span class="kw">components</span>() <span class="op">%&gt;%</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a><span class="st">    </span>igraph<span class="op">::</span><span class="kw">groups</span>() <span class="op">%&gt;%</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true"></a><span class="st">    </span><span class="kw">tibble</span>(<span class="dt">group_member =</span> .) <span class="op">%&gt;%</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">group_size =</span> <span class="kw">map_int</span>(<span class="st">`</span><span class="dt">group_member</span><span class="st">`</span>, length)) <span class="op">%&gt;%</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true"></a><span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(group_size))</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true"></a>}</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true"></a>pathway_protein_graph &lt;-<span class="st"> </span>shared_pathway_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">protein_df_to_graph</span>()</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true"></a>pathway_protein_groups &lt;-<span class="st"> </span>pathway_protein_graph <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">graph_to_protein_groups</span>()</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true"></a>pathway_protein_groups <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true"></a><span class="co">#&gt; tibble [7 × 2] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true"></a><span class="co">#&gt;  $ group_member:List of 7</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true"></a><span class="co">#&gt;   ..$ 2: chr [1:3] &quot;P05362&quot; &quot;P29597&quot; &quot;Q9UMF0&quot;</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true"></a><span class="co">#&gt;   ..$ 1: chr &quot;O75791&quot;</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true"></a><span class="co">#&gt;   ..$ 3: chr &quot;P0C6A0&quot;</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true"></a><span class="co">#&gt;   ..$ 4: chr &quot;Q13445&quot;</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true"></a><span class="co">#&gt;   ..$ 5: chr &quot;Q6P4F2&quot;</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true"></a><span class="co">#&gt;   ..$ 6: chr &quot;Q8N9T8&quot;</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true"></a><span class="co">#&gt;   ..$ 7: chr &quot;Q9BYD3&quot;</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true"></a><span class="co">#&gt;   ..- attr(*, &quot;dim&quot;)= int 7</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true"></a><span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 1</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true"></a><span class="co">#&gt;   .. ..$ : chr [1:7] &quot;2&quot; &quot;1&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true"></a><span class="co">#&gt;  $ group_size  : Named int [1:7] 3 1 1 1 1 1 1</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:7] &quot;2&quot; &quot;1&quot; &quot;3&quot; &quot;4&quot; ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">plot</span>(pathway_protein_graph)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="retrieving-shared-protein-protein-interactions" class="section level2">
+<h2>Retrieving shared protein-protein interactions</h2>
+<p>We can complement the information given by pathway ontologies with data of interactions between proteins. For each pair of proteins, we retrieve shared protein-protein interactions, either a direct interaction or an interaction where there’s one mediator protein in the middle (see parameters section).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>get_ppi &lt;-<span class="st"> </span><span class="cf">function</span>(gene_protein_df, <span class="dt">n_intermediate_proteins =</span> <span class="dv">0</span>) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>  endpoint &lt;-<span class="st"> &quot;/protein/ppi/pairwise&quot;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>  params &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>    <span class="dt">uniprot_id_list =</span> gene_protein_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(<span class="st">&quot;uniprot_id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">I</span>(),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>    <span class="dt">n_intermediate_proteins =</span> n_intermediate_proteins</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>  )</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>  df &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>    <span class="dt">route =</span> endpoint,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a>    <span class="dt">params =</span> params,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a>    <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true"></a>    <span class="dt">method =</span> <span class="st">&quot;POST&quot;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true"></a>  )</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true"></a>  <span class="cf">if</span> (<span class="kw">nrow</span>(df) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true"></a>    res_df &lt;-<span class="st"> </span>gene_protein_df <span class="op">%&gt;%</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true"></a><span class="st">      </span><span class="kw">select</span>(<span class="dt">protein =</span> uniprot_id) <span class="op">%&gt;%</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true"></a><span class="st">      </span><span class="kw">left_join</span>(df, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;protein&quot;</span>))</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true"></a>  } <span class="cf">else</span> {</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true"></a>    res_df &lt;-<span class="st"> </span>gene_protein_df <span class="op">%&gt;%</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true"></a><span class="st">      </span><span class="kw">select</span>(<span class="dt">protein =</span> uniprot_id) <span class="op">%&gt;%</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true"></a><span class="st">      </span><span class="kw">mutate</span>(<span class="dt">assoc_protein =</span> <span class="ot">NA_character_</span>, <span class="dt">path_size =</span> <span class="ot">NA_integer_</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true"></a>  }</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true"></a>  res_df</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true"></a>}</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true"></a>ppi_df &lt;-<span class="st"> </span><span class="kw">get_ppi</span>(gene_protein_df, <span class="dt">n_intermediate_proteins =</span> PPI_N_INTERMEDIATE_PROTEINS)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true"></a>ppi_df</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 77 x 3</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true"></a><span class="co">#&gt;    protein assoc_protein path_size</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;             &lt;int&gt;</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true"></a><span class="co">#&gt;  1 Q13445  &lt;NA&gt;                 NA</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true"></a><span class="co">#&gt;  2 Q9BYD3  Q8N9T8                2</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true"></a><span class="co">#&gt;  3 Q9BYD3  Q8N9T8                2</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true"></a><span class="co">#&gt;  4 Q9BYD3  Q8N9T8                2</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true"></a><span class="co">#&gt;  5 Q9BYD3  Q8N9T8                2</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true"></a><span class="co">#&gt;  6 P29597  P05362                2</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true"></a><span class="co">#&gt;  7 P29597  P05362                2</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true"></a><span class="co">#&gt;  8 P29597  P05362                2</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true"></a><span class="co">#&gt;  9 P29597  P05362                2</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true"></a><span class="co">#&gt; 10 P29597  O75791                2</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true"></a><span class="co">#&gt; # … with 67 more rows</span></span></code></pre></div>
+<p>Like in the query for pathway data, we convert and analyse these results as a graph.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>get_shared_ppi &lt;-<span class="st"> </span><span class="cf">function</span>(ppi_df) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>  per_row &lt;-<span class="st"> </span><span class="cf">function</span>(ppi_df, x, y) {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>    res &lt;-<span class="st"> </span>ppi_df <span class="op">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="st">      </span><span class="kw">filter</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>        <span class="st">`</span><span class="dt">protein</span><span class="st">`</span> <span class="op">==</span><span class="st"> </span>x,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>        <span class="st">`</span><span class="dt">assoc_protein</span><span class="st">`</span> <span class="op">==</span><span class="st"> </span>y</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>      ) <span class="op">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a><span class="st">      </span><span class="kw">nrow</span>() <span class="op">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="st">      `</span><span class="dt">&gt;</span><span class="st">`</span>(<span class="dv">0</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a>    res</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a>  }</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a>  pairwise_permutations &lt;-<span class="st"> </span>ppi_df <span class="op">%&gt;%</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a><span class="st">    </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">protein</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a><span class="st">    </span><span class="kw">unique</span>() <span class="op">%&gt;%</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true"></a><span class="st">    </span>gtools<span class="op">::</span><span class="kw">permutations</span>(<span class="dt">n =</span> <span class="kw">length</span>(.), <span class="dt">r =</span> <span class="dv">2</span>, <span class="dt">v =</span> .)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true"></a>  shared_ppi_df &lt;-<span class="st"> </span><span class="kw">tibble</span>(</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true"></a>    <span class="dt">protein =</span> pairwise_permutations[, <span class="dv">1</span>],</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true"></a>    <span class="dt">assoc_protein =</span> pairwise_permutations[, <span class="dv">2</span>]</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true"></a>  ) <span class="op">%&gt;%</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true"></a>      <span class="dt">shared_ppi =</span> <span class="kw">map2_lgl</span>(<span class="st">`</span><span class="dt">protein</span><span class="st">`</span>, <span class="st">`</span><span class="dt">assoc_protein</span><span class="st">`</span>, <span class="cf">function</span>(x, y) {</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true"></a>        <span class="kw">per_row</span>(<span class="dt">ppi_df =</span> ppi_df, <span class="dt">x =</span> x, <span class="dt">y =</span> y)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true"></a>      }),</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true"></a>      <span class="dt">combination =</span> <span class="kw">map2_chr</span>(<span class="st">`</span><span class="dt">protein</span><span class="st">`</span>, <span class="st">`</span><span class="dt">assoc_protein</span><span class="st">`</span>, <span class="cf">function</span>(x, y) {</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true"></a>        comb &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">c</span>(x, y))</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true"></a>        <span class="kw">paste</span>(comb, <span class="dt">collapse =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true"></a>      }),</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true"></a>      <span class="dt">connected =</span> shared_ppi</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true"></a>    )</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true"></a></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true"></a>  shared_ppi_df</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true"></a>}</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true"></a>shared_ppi_df &lt;-<span class="st"> </span><span class="kw">get_shared_ppi</span>(ppi_df)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true"></a>n_ppi_pairs &lt;-<span class="st"> </span>shared_ppi_df <span class="op">%&gt;%</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(shared_ppi) <span class="op">%&gt;%</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true"></a><span class="st">  </span><span class="kw">nrow</span>()</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true"></a><span class="kw">print</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;Num. shared_ppi pairs: {n_ppi_pairs}&quot;</span>))</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true"></a><span class="co">#&gt; Num. shared_ppi pairs: 10</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true"></a>shared_ppi_df</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 72 x 5</span></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true"></a><span class="co">#&gt;    protein assoc_protein shared_ppi combination   connected</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;lgl&gt;      &lt;chr&gt;         &lt;lgl&gt;    </span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true"></a><span class="co">#&gt;  1 O75791  P05362        TRUE       O75791,P05362 TRUE     </span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true"></a><span class="co">#&gt;  2 O75791  P0C6A0        FALSE      O75791,P0C6A0 FALSE    </span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true"></a><span class="co">#&gt;  3 O75791  P29597        TRUE       O75791,P29597 TRUE     </span></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true"></a><span class="co">#&gt;  4 O75791  Q13445        FALSE      O75791,Q13445 FALSE    </span></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true"></a><span class="co">#&gt;  5 O75791  Q6P4F2        FALSE      O75791,Q6P4F2 FALSE    </span></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true"></a><span class="co">#&gt;  6 O75791  Q8N9T8        FALSE      O75791,Q8N9T8 FALSE    </span></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true"></a><span class="co">#&gt;  7 O75791  Q9BYD3        FALSE      O75791,Q9BYD3 FALSE    </span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true"></a><span class="co">#&gt;  8 O75791  Q9UMF0        FALSE      O75791,Q9UMF0 FALSE    </span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true"></a><span class="co">#&gt;  9 P05362  O75791        TRUE       O75791,P05362 TRUE     </span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true"></a><span class="co">#&gt; 10 P05362  P0C6A0        FALSE      P05362,P0C6A0 FALSE    </span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true"></a><span class="co">#&gt; # … with 62 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>ppi_protein_graph &lt;-<span class="st"> </span><span class="kw">protein_df_to_graph</span>(shared_ppi_df)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>ppi_protein_groups &lt;-<span class="st"> </span><span class="kw">graph_to_protein_groups</span>(ppi_protein_graph)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>ppi_protein_groups <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="co">#&gt; tibble [5 × 2] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="co">#&gt;  $ group_member:List of 5</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="co">#&gt;   ..$ 1: chr [1:4] &quot;O75791&quot; &quot;P05362&quot; &quot;P29597&quot; &quot;Q9UMF0&quot;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="co">#&gt;   ..$ 5: chr [1:2] &quot;Q8N9T8&quot; &quot;Q9BYD3&quot;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a><span class="co">#&gt;   ..$ 2: chr &quot;P0C6A0&quot;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a><span class="co">#&gt;   ..$ 3: chr &quot;Q13445&quot;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a><span class="co">#&gt;   ..$ 4: chr &quot;Q6P4F2&quot;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a><span class="co">#&gt;   ..- attr(*, &quot;dim&quot;)= int 5</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true"></a><span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 1</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true"></a><span class="co">#&gt;   .. ..$ : chr [1:5] &quot;1&quot; &quot;5&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true"></a><span class="co">#&gt;  $ group_size  : Named int [1:5] 4 2 1 1 1</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;1&quot; &quot;5&quot; &quot;2&quot; &quot;3&quot; ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="kw">plot</span>(ppi_protein_graph)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="sessioninfo" class="section level2">
+<h2><code>sessionInfo</code></h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="kw">sessionInfo</span>()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="co">#&gt; R version 4.0.2 (2020-06-22)</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co">#&gt; Running under: Manjaro Linux</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="co">#&gt; BLAS:   /usr/lib/libblas.so.3.9.0</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="co">#&gt; LAPACK: /usr/lib/liblapack.so.3.9.0</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a><span class="co">#&gt; locale:</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true"></a><span class="co">#&gt;  [1] LC_CTYPE=en_GB.UTF-8       LC_NUMERIC=C              </span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true"></a><span class="co">#&gt;  [3] LC_TIME=en_GB.UTF-8        LC_COLLATE=C              </span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true"></a><span class="co">#&gt;  [5] LC_MONETARY=en_GB.UTF-8    LC_MESSAGES=en_GB.UTF-8   </span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true"></a><span class="co">#&gt;  [7] LC_PAPER=en_GB.UTF-8       LC_NAME=C                 </span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true"></a><span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true"></a><span class="co">#&gt; [11] LC_MEASUREMENT=en_GB.UTF-8 LC_IDENTIFICATION=C       </span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true"></a><span class="co">#&gt; attached base packages:</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true"></a><span class="co">#&gt; other attached packages:</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true"></a><span class="co">#&gt; [1] epigraphdb_0.2.1 igraph_1.2.5     glue_1.4.1       purrr_0.3.4     </span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true"></a><span class="co">#&gt; [5] dplyr_1.0.2      magrittr_1.5    </span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true"></a><span class="co">#&gt;  [1] Rcpp_1.0.4.6     knitr_1.28       tidyselect_1.1.0 R6_2.4.1        </span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true"></a><span class="co">#&gt;  [5] rlang_0.4.7      fansi_0.4.1      stringr_1.4.0    httr_1.4.2      </span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true"></a><span class="co">#&gt;  [9] tools_4.0.2      xfun_0.14        utf8_1.1.4       cli_2.0.2       </span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true"></a><span class="co">#&gt; [13] gtools_3.8.2     htmltools_0.4.0  ellipsis_0.3.1   assertthat_0.2.1</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true"></a><span class="co">#&gt; [17] yaml_2.2.1       digest_0.6.25    tibble_3.0.3     lifecycle_0.2.0 </span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true"></a><span class="co">#&gt; [21] crayon_1.3.4     vctrs_0.3.2      curl_4.3         evaluate_0.14   </span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true"></a><span class="co">#&gt; [25] rmarkdown_2.1    stringi_1.4.6    compiler_4.0.2   pillar_1.4.6    </span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true"></a><span class="co">#&gt; [29] generics_0.0.2   jsonlite_1.7.0   pkgconfig_2.0.3</span></span></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
