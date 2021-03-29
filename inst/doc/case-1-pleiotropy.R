@@ -4,7 +4,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## -----------------------------------------------------------------------------
+## ----message = F--------------------------------------------------------------
 library("magrittr")
 library("dplyr")
 library("purrr")
@@ -34,9 +34,9 @@ get_gene_protein <- function(genelist) {
   protein_df <- r
   if (nrow(protein_df) > 0) {
     res_df <- protein_df %>%
-      select(protein_name = `gene.name`, uniprot_id = `protein.uniprot_id`)
+      select(gene_name = `gene.name`, uniprot_id = `protein.uniprot_id`)
   } else {
-    res_df <- tibble() %>% set_names(c("protein_name", "uniprot_id"))
+    res_df <- tibble() %>% set_names(c("gene_name", "uniprot_id"))
   }
 
   res_df

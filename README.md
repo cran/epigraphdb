@@ -9,7 +9,6 @@
 <!-- badges: start -->
 
 [![CRAN status](https://www.r-pkg.org/badges/version/epigraphdb)](https://cran.r-project.org/package=epigraphdb)
-[![Travis build status](https://travis-ci.org/MRCIEU/epigraphdb-r.svg?branch=master)](https://travis-ci.org/MRCIEU/epigraphdb-r/)
 [![Codecov test coverage](https://codecov.io/gh/MRCIEU/epigraphdb-r/branch/master/graph/badge.svg)](https://codecov.io/gh/MRCIEU/epigraphdb-r?branch=master)
 
 <!-- badges: end -->
@@ -30,9 +29,7 @@ To install the latest development version from github (
 devtools::install_github("MRCIEU/epigraphdb-r")
 ```
 
-To install a stable version from CRAN (
-we are in the process of submitting `epigraphdb` to CRAN
-):
+To install a stable version from CRAN:
 ```r
 install.packages("epigraphdb")
 ```
@@ -46,13 +43,8 @@ the R package name is "epigraphdb".
 
 ```r
 library("epigraphdb")
-#>   EpiGraphDB v0.3
 #>
-#>   Web API: https://api.epigraphdb.org
-#>
-#>   To turn off this message, use
-#>   suppressPackageStartupMessages({library("epigraphdb")})
-#>
+#>   EpiGraphDB v1.0 (API: https://api.epigraphdb.org)
 #>
 mr(outcome_trait = "Body mass index")
 #> # A tibble: 370 x 12
@@ -77,6 +69,7 @@ how to use the API in R please check out the following articles:
 
 | Article  |
 |---|
+| [Getting started with EpiGraphDB in R](https://mrcieu.github.io/epigraphdb-r/articles/getting-started-with-epigraphdb-r.html) |
 | [Using EpiGraphDB R package](https://mrcieu.github.io/epigraphdb-r/articles/using-epigraphdb-r-package.html) |
 | [Using EpiGraphDB API (from R and command line) ](https://mrcieu.github.io/epigraphdb-r/articles/using-epigraphdb-api.html) |
 | [Package options](https://mrcieu.github.io/epigraphdb-r/articles/options.html)|
@@ -304,16 +297,20 @@ We also provide a list of functions (see the table below) that are equivalent to
 
 Please cite EpiGraphDB as
 
-> Yi Liu, Benjamin Elsworth, Pau Erola, Valeriia Haberland, Gibran Hemani, Matt Lyon, Jie Zheng, Tom R Gaunt. 2020. EpiGraphDB: a database and data mining platform for health data science. *bioRxiv*. [doi:10.1101/2020.08.01.230193](https://doi.org/10.1101/2020.08.01.230193).
+> Yi Liu, Benjamin Elsworth, Pau Erola, Valeriia Haberland, Gibran Hemani, Matt Lyon, Jie Zheng, Oliver Lloyd, Marina Vabistsevits, Tom R Gaunt, EpiGraphDB: a database and data mining platform for health data science, Bioinformatics, btaa961, https://doi.org/10.1093/bioinformatics/btaa961
 
 ```
-@article {epigraphdb2020,
-  author = {Liu, Yi and Elsworth, Benjamin and Erola, Pau and Haberland, Valeriia and Hemani, Gibran and Lyon, Matt and Zheng, Jie and Gaunt, Tom R},
-  title = {{EpiGraphDB}: a database and data mining platform for health data science},
-  journal = {bioRxiv},
-  year = {2020},
-  doi = {10.1101/2020.08.01.230193},
-  url = {https://epigraphdb.org}
+@article{epigraphdb2020bioinformatics,
+    author = {Liu, Yi and Elsworth, Benjamin and Erola, Pau and Haberland, Valeriia and Hemani, Gibran and Lyon, Matt and Zheng, Jie and Lloyd, Oliver and Vabistsevits, Marina and Gaunt, Tom R},
+    title = {{EpiGraphDB}: a database and data mining platform for health data science},
+    journal = {Bioinformatics},
+    year = {2020},
+    month = {11},
+    issn = {1367-4803},
+    doi = {10.1093/bioinformatics/btaa961},
+    url = {https://doi.org/10.1093/bioinformatics/btaa961},
+    note = {btaa961},
+    eprint = {https://academic.oup.com/bioinformatics/advance-article-pdf/doi/10.1093/bioinformatics/btaa961/34178613/btaa961.pdf}
 }
 ```
 

@@ -95,7 +95,7 @@ meta_nodes_list_node <- function(meta_node, full_data = TRUE, limit = 10, offset
 #'
 #' @examples
 #' # List the first 5 MR relationships
-#' meta_rels_list_rel(meta_rel = "MR", limit = 5)
+#' meta_rels_list_rel(meta_rel = "MR_EVE_MR", limit = 5)
 #' @export
 meta_rels_list_rel <- function(meta_rel, limit = 10, offset = 0,
                                mode = c("table", "raw")) {
@@ -132,8 +132,8 @@ meta_rels_list_rel <- function(meta_rel, limit = 10, offset = 0,
 #' @return Data from `GET /meta/nodes/{meta_node}/search`
 #'
 #' @examples
-#' # List the first 5 MR relationships
-#' meta_rels_list_rel(meta_rel = "MR", limit = 5)
+#' # Search Gwas nodes
+#' meta_nodes_search_node(meta_node = "Gwas", name = "body mass index")
 #' @export
 meta_nodes_search_node <- function(meta_node,
                                    id = NULL, name = NULL,

@@ -31,24 +31,6 @@ mr_df <- get_mr(STARTING_TRAIT)
 mr_df %>% glimpse()
 
 ## -----------------------------------------------------------------------------
-trait_to_disease <- function(trait) {
-  endpoint <- "/ontology/gwas-efo-disease"
-  params <- list(trait = trait)
-  disease_df <- query_epigraphdb(route = endpoint, params = params, mode = "table")
-  if (nrow(disease_df) > 0) {
-    res <- disease_df %>% pull(`disease.label`)
-  } else {
-    res <- c()
-  }
-  res
-}
-
-disease_df <- mr_df %>%
-  mutate(disease = map(`outcome.trait`, trait_to_disease)) %>%
-  filter(map_lgl(`disease`, function(x) !is.null(x)))
-disease_df
-
-## -----------------------------------------------------------------------------
 get_gwas_pair_literature <- function(gwas_id, assoc_gwas_id) {
   endpoint <- "/literature/gwas/pairwise"
   # NOTE in this example we blacklist to semmentic types
@@ -112,7 +94,7 @@ lit_counts %>%
   filter(n < 100) %>%
   {
     ggplot(.) +
-      aes(x = `st.name`, y = `n`, fill = `st.type`) +
+      aes(x = `st.name`, y = `n`) +
       geom_col() +
       geom_text(
         aes(label = `n`),
@@ -123,7 +105,7 @@ lit_counts %>%
   }
 
 ## -----------------------------------------------------------------------------
-focus_term <- "Leptin"
+focus_term <- "leptin"
 lit_detail <- lit_df_filter %>% filter(`st.name` == focus_term)
 lit_detail %>% head()
 
@@ -135,36 +117,33 @@ lit_detail <- lit_detail %>%
 nodes <- bind_rows(
   lit_detail %>% select(node = `gwas.trait`) %>% distinct() %>% mutate(node_type = 1),
   lit_detail %>% select(node = `assoc_gwas.trait`) %>% distinct() %>% mutate(node_type = 1),
-  lit_detail %>% select(node = `s1.subject_name`) %>% distinct() %>% mutate(node_type = 2),
-  lit_detail %>% select(node = `s2.subject_name`) %>% distinct() %>% mutate(node_type = 2),
-  lit_detail %>% select(node = `s1.object_name`) %>% distinct() %>% mutate(node_type = 2),
-  lit_detail %>% select(node = `s2.object_name`) %>% distinct() %>% mutate(node_type = 2)
-) %>%
-  mutate(node_type = ifelse(node == focus_term, 3, node_type)) %>%
-  distinct()
+  lit_detail %>% select(node = `st1.name`) %>% distinct() %>% mutate(node_type = 2),
+  lit_detail %>% select(node = `st2.name`) %>% distinct() %>% mutate(node_type = 2),
+  lit_detail %>% select(node = `st.name`) %>% distinct() %>% mutate(node_type = 3),
+) %>% distinct()
 nodes
 
 ## -----------------------------------------------------------------------------
 edges <- bind_rows(
   # exposure -> s1 subject
   lit_detail %>%
-    select(node = `gwas.trait`, assoc_node = `s1.subject_name`) %>%
+    select(node = `gwas.trait`, assoc_node = `st1.name`) %>%
     distinct(),
   # s2 object -> outcome
   lit_detail %>%
-    select(node = `s2.object_name`, assoc_node = `assoc_gwas.trait`) %>%
+    select(node = `st2.name`, assoc_node = `assoc_gwas.trait`) %>%
     distinct(),
   # s1 subject - s1 predicate -> s1 object
   lit_detail %>%
     select(
-      node = `s1.subject_name`, assoc_node = `s1.object_name`,
+      node = `st1.name`, assoc_node = `st.name`,
       label = `s1.predicate`
     ) %>%
     distinct(),
   # s2 subject - s2 predicate -> s2 object
   lit_detail %>%
     select(
-      node = `s2.subject_name`, assoc_node = `s2.object_name`,
+      node = `st.name`, assoc_node = `st2.name`,
       label = `s2.predicate`
     ) %>%
     distinct()
@@ -173,26 +152,22 @@ edges <- bind_rows(
 edges
 
 ## -----------------------------------------------------------------------------
-plot_network <- function(edges, nodes, show_edge_labels = FALSE) {
-
-  # default is to not display edge labels
-  if (!show_edge_labels) {
-    edges <- select(edges, -label)
-  }
+plot_network <- function(edges, nodes) {
 
   graph <- graph_from_data_frame(edges, directed = TRUE, vertices = nodes)
   graph$layout <- layout_with_kk
 
   # generate colors based on node type
-  colrs <- c("tomato", "steelblue", "gold")
-  V(graph)$color <- colrs[V(graph)$node_type]
+  colors <- c("tomato", "lightblue", "gold")
+  V(graph)$color <- colors[V(graph)$node_type]
 
   # Configure canvas
   default_mar <- par("mar")
   new_mar <- c(0, 0, 0, 0)
   par(mar = new_mar)
 
-  plot.igraph(graph,
+  plot.igraph(
+    graph,
     vertex.size = 13,
     vertex.label.color = "black",
     vertex.label.family = "Helvetica",
@@ -206,7 +181,7 @@ plot_network <- function(edges, nodes, show_edge_labels = FALSE) {
 }
 
 ## ----dpi=300------------------------------------------------------------------
-plot_network(edges, nodes, show_edge_labels = TRUE)
+plot_network(edges, nodes)
 
 ## -----------------------------------------------------------------------------
 get_literature <- function(gwas_id, semmed_triple_id) {
@@ -218,7 +193,7 @@ get_literature <- function(gwas_id, semmed_triple_id) {
     pval_threshold = 1e-1
   )
   df <- query_epigraphdb(route = endpoint, params = params, mode = "table")
-  df %>% select(`triple.id`, `lit.pubmed_id`)
+  df %>% select(`triple.id`, `triple.name`, `lit.id`)
 }
 
 pub_df <- bind_rows(

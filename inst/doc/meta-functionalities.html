@@ -14,19 +14,7 @@
 
 <title>Meta functionalities of the EpiGraphDB platform</title>
 
-<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
-// be compatible with the behavior of Pandoc < 2.8).
-document.addEventListener('DOMContentLoaded', function(e) {
-  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
-  var i, h, a;
-  for (i = 0; i < hs.length; i++) {
-    h = hs[i];
-    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
-    a = h.attributes;
-    while (a.length > 0) h.removeAttribute(a[0].name);
-  }
-});
-</script>
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -34,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -119,187 +108,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type="text/css">body {
-background-color: #fff;
-margin: 1em auto;
-max-width: 700px;
-overflow: visible;
-padding-left: 2em;
-padding-right: 2em;
-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size: 14px;
-line-height: 1.35;
-}
-#TOC {
-clear: both;
-margin: 0 0 10px 10px;
-padding: 4px;
-width: 400px;
-border: 1px solid #CCCCCC;
-border-radius: 5px;
-background-color: #f6f6f6;
-font-size: 13px;
-line-height: 1.3;
-}
-#TOC .toctitle {
-font-weight: bold;
-font-size: 15px;
-margin-left: 5px;
-}
-#TOC ul {
-padding-left: 40px;
-margin-left: -1.5em;
-margin-top: 5px;
-margin-bottom: 5px;
-}
-#TOC ul ul {
-margin-left: -2em;
-}
-#TOC li {
-line-height: 16px;
-}
-table {
-margin: 1em auto;
-border-width: 1px;
-border-color: #DDDDDD;
-border-style: outset;
-border-collapse: collapse;
-}
-table th {
-border-width: 2px;
-padding: 5px;
-border-style: inset;
-}
-table td {
-border-width: 1px;
-border-style: inset;
-line-height: 18px;
-padding: 5px 5px;
-}
-table, table th, table td {
-border-left-style: none;
-border-right-style: none;
-}
-table thead, table tr.even {
-background-color: #f7f7f7;
-}
-p {
-margin: 0.5em 0;
-}
-blockquote {
-background-color: #f6f6f6;
-padding: 0.25em 0.75em;
-}
-hr {
-border-style: solid;
-border: none;
-border-top: 1px solid #777;
-margin: 28px 0;
-}
-dl {
-margin-left: 0;
-}
-dl dd {
-margin-bottom: 13px;
-margin-left: 13px;
-}
-dl dt {
-font-weight: bold;
-}
-ul {
-margin-top: 0;
-}
-ul li {
-list-style: circle outside;
-}
-ul ul {
-margin-bottom: 0;
-}
-pre, code {
-background-color: #f7f7f7;
-border-radius: 3px;
-color: #333;
-white-space: pre-wrap; 
-}
-pre {
-border-radius: 3px;
-margin: 5px 0px 10px 0px;
-padding: 10px;
-}
-pre:not([class]) {
-background-color: #f7f7f7;
-}
-code {
-font-family: Consolas, Monaco, 'Courier New', monospace;
-font-size: 85%;
-}
-p > code, li > code {
-padding: 2px 0px;
-}
-div.figure {
-text-align: center;
-}
-img {
-background-color: #FFFFFF;
-padding: 2px;
-border: 1px solid #DDDDDD;
-border-radius: 3px;
-border: 1px solid #CCCCCC;
-margin: 0 5px;
-}
-h1 {
-margin-top: 0;
-font-size: 35px;
-line-height: 40px;
-}
-h2 {
-border-bottom: 4px solid #f7f7f7;
-padding-top: 10px;
-padding-bottom: 2px;
-font-size: 145%;
-}
-h3 {
-border-bottom: 2px solid #f7f7f7;
-padding-top: 10px;
-font-size: 120%;
-}
-h4 {
-border-bottom: 1px solid #f7f7f7;
-margin-left: 8px;
-font-size: 105%;
-}
-h5, h6 {
-border-bottom: 1px solid #ccc;
-font-size: 105%;
-}
-a {
-color: #0033dd;
-text-decoration: none;
-}
-a:hover {
-color: #6666ff; }
-a:visited {
-color: #800080; }
-a:visited:hover {
-color: #BB00BB; }
-a[href^="http:"] {
-text-decoration: underline; }
-a[href^="https:"] {
-text-decoration: underline; }
-
-code > span.kw { color: #555; font-weight: bold; } 
-code > span.dt { color: #902000; } 
-code > span.dv { color: #40a070; } 
-code > span.bn { color: #d14; } 
-code > span.fl { color: #d14; } 
-code > span.ch { color: #d14; } 
-code > span.st { color: #d14; } 
-code > span.co { color: #888888; font-style: italic; } 
-code > span.ot { color: #007020; } 
-code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; } 
-code > span.er { color: #a61717; background-color: #e3d2d2; } 
-</style>
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
 
 
 
@@ -327,210 +136,204 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <li>The Swagger interface: <a href="https://api.epigraphdb.org" class="uri">https://api.epigraphdb.org</a></li>
 <li>The sections regarding API endpoints on the documentation site: <a href="https://docs.epigraphdb.org/api/api-endpoints/" class="uri">https://docs.epigraphdb.org/api/api-endpoints/</a></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;purrr&quot;</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;igraph&quot;</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;epigraphdb&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;magrittr&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;purrr&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;igraph&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;epigraphdb&quot;</span>)</span></code></pre></div>
 <div id="metadata" class="section level2">
 <h2>Metadata</h2>
 <p>Here we query for the metadata information using the endpoint <code>GET /meta/schema</code>, which will be used for downstream processing.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>endpoint &lt;-<span class="st"> &quot;/meta/schema&quot;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>params &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>  <span class="dt">graphviz =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>  <span class="dt">plot =</span> <span class="ot">FALSE</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>metadata &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>  <span class="dt">route =</span> endpoint, <span class="dt">params =</span> params, <span class="dt">mode =</span> <span class="st">&quot;raw&quot;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>metadata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>(<span class="dv">2</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="co">#&gt;  $ nodes      :List of 13</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="co">#&gt;   ..$ Disease     :List of 2</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a><span class="co">#&gt;   ..$ SemmedTerm  :List of 2</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="co">#&gt;   ..$ Pathway     :List of 2</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a><span class="co">#&gt;   ..$ Gene        :List of 2</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a><span class="co">#&gt;   ..$ Literature  :List of 2</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a><span class="co">#&gt;   ..$ Protein     :List of 2</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a><span class="co">#&gt;   ..$ Variant     :List of 2</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a><span class="co">#&gt;   ..$ SemmedTriple:List of 2</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a><span class="co">#&gt;   ..$ Efo         :List of 2</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a><span class="co">#&gt;   ..$ Tissue      :List of 2</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a><span class="co">#&gt;   ..$ Gwas        :List of 2</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true"></a><span class="co">#&gt;   ..$ Drug        :List of 2</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true"></a><span class="co">#&gt;   ..$ Event       :List of 2</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true"></a><span class="co">#&gt;  $ edges      :List of 42</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true"></a><span class="co">#&gt;   ..$ OPENTARGETS_DRUG_TO_DISEASE          :List of 2</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true"></a><span class="co">#&gt;   ..$ PROTEIN_TO_LITERATURE                :List of 2</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true"></a><span class="co">#&gt;   ..$ GWAS_NLP_EFO                         :List of 2</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true"></a><span class="co">#&gt;   ..$ EVENT_IN_PATHWAY                     :List of 2</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true"></a><span class="co">#&gt;   ..$ BN_GEN_COR                           :List of 2</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true"></a><span class="co">#&gt;   ..$ INTACT_NOT_INTERACTS_WITH            :List of 2</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true"></a><span class="co">#&gt;   ..$ STRING_INTERACT_WITH                 :List of 2</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true"></a><span class="co">#&gt;   ..$ PRS                                  :List of 2</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true"></a><span class="co">#&gt;   ..$ INTACT_INTERACTS_WITH_PROTEIN_PROTEIN:List of 2</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true"></a><span class="co">#&gt;   ..$ INTACT_INTERACTS_WITH_GENE_PROTEIN   :List of 2</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true"></a><span class="co">#&gt;   ..$ TOPHITS                              :List of 2</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true"></a><span class="co">#&gt;   ..$ SEM_OBJ                              :List of 2</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true"></a><span class="co">#&gt;   ..$ PROTEIN_TO_DISEASE                   :List of 2</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true"></a><span class="co">#&gt;   ..$ MONDO_MAP_UMLS                       :List of 2</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true"></a><span class="co">#&gt;   ..$ MR                                   :List of 2</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true"></a><span class="co">#&gt;   ..$ PROTEIN_IN_EVENT                     :List of 2</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true"></a><span class="co">#&gt;   ..$ VARIANT_TO_GENE                      :List of 2</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true"></a><span class="co">#&gt;   ..$ PATHWAY_TO_DISEASE                   :List of 2</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true"></a><span class="co">#&gt;   ..$ SEM_PREDICATE                        :List of 2</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true"></a><span class="co">#&gt;   ..$ EXPRESSED_IN                         :List of 2</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true"></a><span class="co">#&gt;   ..$ EFO_CHILD_OF                         :List of 2</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true"></a><span class="co">#&gt;   ..$ INTACT_INTERACTS_WITH_GENE_GENE      :List of 2</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true"></a><span class="co">#&gt;   ..$ GWAS_SEM                             :List of 2</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true"></a><span class="co">#&gt;   ..$ PRECEDING_EVENT                      :List of 2</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true"></a><span class="co">#&gt;   ..$ SEM_GENE                             :List of 2</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true"></a><span class="co">#&gt;   ..$ METAMAP_LITE                         :List of 2</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true"></a><span class="co">#&gt;   ..$ SEM_SUB                              :List of 2</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true"></a><span class="co">#&gt;   ..$ GENE_TO_LITERATURE                   :List of 2</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true"></a><span class="co">#&gt;   ..$ PROTEIN_IN_PATHWAY                   :List of 2</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true"></a><span class="co">#&gt;   ..$ MONDO_MAP_EFO                        :List of 2</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true"></a><span class="co">#&gt;   ..$ CPIC                                 :List of 2</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true"></a><span class="co">#&gt;   ..$ XQTL_MULTI_SNP_MR                    :List of 2</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true"></a><span class="co">#&gt;   ..$ GWAS_TO_LIT                          :List of 2</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true"></a><span class="co">#&gt;   ..$ PATHWAY_TO_LITERATURE                :List of 2</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true"></a><span class="co">#&gt;   ..$ XQTL_SINGLE_SNP_MR_SNP_GENE          :List of 2</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true"></a><span class="co">#&gt;   ..$ OBS_COR                              :List of 2</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true"></a><span class="co">#&gt;   ..$ GWAS_NLP                             :List of 2</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true"></a><span class="co">#&gt;   ..$ XQTL_SINGLE_SNP_MR_GENE_GWAS         :List of 2</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true"></a><span class="co">#&gt;   ..$ OPENTARGETS_DRUG_TO_TARGET           :List of 2</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true"></a><span class="co">#&gt;   ..$ GWAS_TO_VARIANT                      :List of 2</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true"></a><span class="co">#&gt;   ..$ GENE_TO_PROTEIN                      :List of 2</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true"></a><span class="co">#&gt;   ..$ SEM_TO_LIT                           :List of 2</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true"></a><span class="co">#&gt;  $ connections:List of 41</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true"></a><span class="co">#&gt;   ..$ :List of 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/meta/schema&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">graphviz =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> <span class="cn">FALSE</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> params, <span class="at">mode =</span> <span class="st">&quot;raw&quot;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>metadata <span class="sc">%&gt;%</span> <span class="fu">str</span>(<span class="dv">2</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ nodes      :List of 12</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Disease         :List of 2</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Pathway         :List of 2</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ LiteratureTerm  :List of 2</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Gene            :List of 2</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ LiteratureTriple:List of 2</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Literature      :List of 2</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Protein         :List of 2</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Variant         :List of 2</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Efo             :List of 2</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Tissue          :List of 2</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Drug            :List of 2</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Gwas            :List of 2</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ edges      :List of 41</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ OPENTARGETS_DRUG_TO_DISEASE :List of 2</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MEDRXIV_SUB                 :List of 2</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GENE_TO_DISEASE             :List of 2</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GWAS_NLP_EFO                :List of 2</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ SEMMEDDB_PREDICATE          :List of 2</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ STRING_INTERACT_WITH        :List of 2</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GWAS_TO_LITERATURE_TRIPLE   :List of 2</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PRS                         :List of 2</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ BIORXIV_PREDICATE           :List of 2</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MONDO_MAP_UMLS              :List of 2</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ SEMMEDDB_SUB                :List of 2</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MR_EVE_MR                   :List of 2</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ OPENGWAS_TOPHITS            :List of 2</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ VARIANT_TO_GENE             :List of 2</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MEDRXIV_OBJ                 :List of 2</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MEDRXIV_PREDICATE           :List of 2</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ EXPRESSED_IN                :List of 2</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ BIORXIV_OBJ                 :List of 2</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ EFO_CHILD_OF                :List of 2</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ BIORXIV_TO_LIT              :List of 2</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GEN_COR                     :List of 2</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ METAMAP_LITE                :List of 2</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ SEMMEDDB_TO_LIT             :List of 2</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PROTEIN_IN_PATHWAY          :List of 2</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MONDO_MAP_EFO               :List of 2</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PATHWAY_CHILD_OF            :List of 2</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ TERM_TO_GENE                :List of 2</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GWAS_EFO_EBI                :List of 2</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CPIC                        :List of 2</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ XQTL_MULTI_SNP_MR           :List of 2</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ XQTL_SINGLE_SNP_MR_SNP_GENE :List of 2</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ OBS_COR                     :List of 2</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GWAS_NLP                    :List of 2</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ XQTL_SINGLE_SNP_MR_GENE_GWAS:List of 2</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MEDRXIV_TO_LIT              :List of 2</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ BIORXIV_SUB                 :List of 2</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ OPENTARGETS_DRUG_TO_TARGET  :List of 2</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GWAS_TO_VARIANT             :List of 2</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GWAS_TO_LITERATURE          :List of 2</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GENE_TO_PROTEIN             :List of 2</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ SEMMEDDB_OBJ                :List of 2</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ connections:List of 38</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span></code></pre></div>
 <div id="meta-nodes" class="section level3">
 <h3>Meta nodes</h3>
-<p>We can extract the specific meta node information as a pandas dataframe from the metadata.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>meta_node_df &lt;-<span class="st"> </span>metadata <span class="op">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">pluck</span>(<span class="st">&quot;nodes&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="st">  </span>{</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    names &lt;-<span class="st"> </span><span class="kw">names</span>(.)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>    <span class="kw">transpose</span>(.) <span class="op">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="st">      </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="st">      </span><span class="kw">mutate</span>(<span class="dt">meta_node =</span> names) <span class="op">%&gt;%</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="st">      </span><span class="co"># Hide properties column which does not display well</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="st">      </span><span class="kw">select</span>(meta_node, count) <span class="op">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="st">      </span><span class="co"># We also need to flatten count</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="st">      </span><span class="kw">mutate</span>(<span class="dt">count =</span> <span class="kw">flatten_int</span>(count))</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>  }</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a>meta_node_df <span class="op">%&gt;%</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a><span class="st">  </span><span class="kw">arrange</span>(meta_node) <span class="op">%&gt;%</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">count =</span> <span class="kw">format</span>(count, <span class="dt">big.mark =</span> <span class="st">&quot;,&quot;</span>))</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 13 x 2</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a><span class="co">#&gt;    meta_node    count       </span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;       </span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a><span class="co">#&gt;  1 Disease      &quot;    21,829&quot;</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a><span class="co">#&gt;  2 Drug         &quot;     2,455&quot;</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a><span class="co">#&gt;  3 Efo          &quot;    25,390&quot;</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a><span class="co">#&gt;  4 Event        &quot;    11,868&quot;</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true"></a><span class="co">#&gt;  5 Gene         &quot;    59,171&quot;</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true"></a><span class="co">#&gt;  6 Gwas         &quot;    31,773&quot;</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true"></a><span class="co">#&gt;  7 Literature   &quot;29,137,785&quot;</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true"></a><span class="co">#&gt;  8 Pathway      &quot;     2,180&quot;</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true"></a><span class="co">#&gt;  9 Protein      &quot;    21,543&quot;</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true"></a><span class="co">#&gt; 10 SemmedTerm   &quot;   103,967&quot;</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true"></a><span class="co">#&gt; 11 SemmedTriple &quot; 3,428,531&quot;</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true"></a><span class="co">#&gt; 12 Tissue       &quot;        53&quot;</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true"></a><span class="co">#&gt; 13 Variant      &quot;    88,176&quot;</span></span></code></pre></div>
+<p>We can extract the specific meta node information as a dataframe from the metadata.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>meta_node_df <span class="ot">&lt;-</span> metadata <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="st">&quot;nodes&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    names <span class="ot">&lt;-</span> <span class="fu">names</span>(.)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">transpose</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">meta_node =</span> names) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Hide properties column which does not display well</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(meta_node, count) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="co"># We also need to flatten count</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">count =</span> <span class="fu">flatten_int</span>(count))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>meta_node_df <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(meta_node) <span class="sc">%&gt;%</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">count =</span> <span class="fu">format</span>(count, <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 2</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    meta_node        count      </span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;      </span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Disease          &quot;   38,960&quot;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Drug             &quot;    2,697&quot;</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Efo              &quot;   25,390&quot;</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Gene             &quot;   57,737&quot;</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Gwas             &quot;   34,494&quot;</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Literature       &quot;3,995,672&quot;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 LiteratureTerm   &quot;  108,905&quot;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 LiteratureTriple &quot;5,609,945&quot;</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Pathway          &quot;    2,441&quot;</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Protein          &quot;   20,280&quot;</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Tissue           &quot;       54&quot;</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 Variant          &quot;   99,005&quot;</span></span></code></pre></div>
 </div>
 <div id="meta-relationships-and-connections" class="section level3">
 <h3>Meta relationships and connections</h3>
 <p>We can also extract the meta relationship (edge) information, and the connections.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>meta_rel_df &lt;-<span class="st"> </span>metadata <span class="op">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">pluck</span>(<span class="st">&quot;edges&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="st">  </span>{</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>    names &lt;-<span class="st"> </span><span class="kw">names</span>(.)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>    <span class="kw">transpose</span>(.) <span class="op">%&gt;%</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="st">      </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="st">      </span><span class="kw">mutate</span>(<span class="dt">meta_rel =</span> names) <span class="op">%&gt;%</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="st">      </span><span class="kw">mutate</span>(<span class="dt">count =</span> <span class="kw">flatten_int</span>(count)) <span class="op">%&gt;%</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="st">      </span><span class="kw">select</span>(meta_rel, count)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>  } <span class="op">%&gt;%</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">inner_join</span>(</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>    metadata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pluck</span>(<span class="st">&quot;connections&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>{</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>      <span class="kw">transpose</span>(.) <span class="op">%&gt;%</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a><span class="st">        </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">meta_rel =</span> <span class="kw">flatten_chr</span>(rel)) <span class="op">%&gt;%</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a><span class="st">        </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(from_node, to_node), flatten_chr) <span class="op">%&gt;%</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="st">        </span><span class="kw">select</span>(meta_rel, from_node, to_node)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>    }</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>  )</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a><span class="co">#&gt; Joining, by = &quot;meta_rel&quot;</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a>meta_rel_df <span class="op">%&gt;%</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a><span class="st">  </span><span class="kw">arrange</span>(from_node, to_node) <span class="op">%&gt;%</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">count =</span> <span class="kw">format</span>(count, <span class="dt">big.mark =</span> <span class="st">&quot;,&quot;</span>))</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 41 x 4</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true"></a><span class="co">#&gt;    meta_rel                     count        from_node to_node   </span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true"></a><span class="co">#&gt;    &lt;chr&gt;                        &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;     </span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true"></a><span class="co">#&gt;  1 MONDO_MAP_EFO                &quot;     2,822&quot; Disease   Efo       </span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true"></a><span class="co">#&gt;  2 MONDO_MAP_UMLS               &quot;     3,414&quot; Disease   SemmedTerm</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true"></a><span class="co">#&gt;  3 OPENTARGETS_DRUG_TO_DISEASE  &quot;     2,486&quot; Drug      Disease   </span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true"></a><span class="co">#&gt;  4 CPIC                         &quot;       355&quot; Drug      Gene      </span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true"></a><span class="co">#&gt;  5 OPENTARGETS_DRUG_TO_TARGET   &quot;     6,024&quot; Drug      Gene      </span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true"></a><span class="co">#&gt;  6 EFO_CHILD_OF                 &quot;    43,154&quot; Efo       Efo       </span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true"></a><span class="co">#&gt;  7 PRECEDING_EVENT              &quot;    10,418&quot; Event     Event     </span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true"></a><span class="co">#&gt;  8 XQTL_MULTI_SNP_MR            &quot; 3,098,049&quot; Gene      Gwas      </span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true"></a><span class="co">#&gt;  9 XQTL_SINGLE_SNP_MR_GENE_GWAS &quot; 8,703,863&quot; Gene      Gwas      </span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true"></a><span class="co">#&gt; 10 GENE_TO_LITERATURE           &quot;       771&quot; Gene      Literature</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true"></a><span class="co">#&gt; # … with 31 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>meta_rel_df <span class="ot">&lt;-</span> metadata <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="st">&quot;edges&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    names <span class="ot">&lt;-</span> <span class="fu">names</span>(.)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">transpose</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">meta_rel =</span> names) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">count =</span> <span class="fu">flatten_int</span>(count)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(meta_rel, count)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  } <span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    metadata <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&quot;connections&quot;</span>) <span class="sc">%&gt;%</span> {</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">transpose</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">meta_rel =</span> <span class="fu">flatten_chr</span>(rel)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate_at</span>(<span class="fu">vars</span>(from_node, to_node), flatten_chr) <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(meta_rel, from_node, to_node)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Joining, by = &quot;meta_rel&quot;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>meta_rel_df <span class="sc">%&gt;%</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(from_node, to_node) <span class="sc">%&gt;%</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">count =</span> <span class="fu">format</span>(count, <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>))</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 38 x 4</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    meta_rel                     count        from_node to_node       </span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                        &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;         </span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 MONDO_MAP_EFO                &quot;     2,819&quot; Disease   Efo           </span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 MONDO_MAP_UMLS               &quot;     8,247&quot; Disease   LiteratureTerm</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 OPENTARGETS_DRUG_TO_DISEASE  &quot;     2,461&quot; Drug      Disease       </span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 CPIC                         &quot;       375&quot; Drug      Gene          </span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 OPENTARGETS_DRUG_TO_TARGET   &quot;     6,534&quot; Drug      Gene          </span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 EFO_CHILD_OF                 &quot;    43,132&quot; Efo       Efo           </span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 GENE_TO_DISEASE              &quot;     5,763&quot; Gene      Disease       </span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 XQTL_MULTI_SNP_MR            &quot; 3,015,233&quot; Gene      Gwas          </span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 XQTL_SINGLE_SNP_MR_GENE_GWAS &quot; 8,449,779&quot; Gene      Gwas          </span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 GENE_TO_PROTEIN              &quot;    19,142&quot; Gene      Protein       </span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 28 more rows</span></span></code></pre></div>
 </div>
 <div id="schema-plot" class="section level3">
 <h3>Schema plot</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>graph &lt;-<span class="st"> </span>meta_rel_df <span class="op">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(from_node, to_node) <span class="op">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="st">  </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">directed =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>graph<span class="op">$</span>layout &lt;-<span class="st"> </span>igraph<span class="op">::</span>layout_with_kk</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="kw">plot</span>(graph)</span></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>graph <span class="ot">&lt;-</span> meta_rel_df <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(from_node, to_node) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  igraph<span class="sc">::</span><span class="fu">graph_from_data_frame</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>graph<span class="sc">$</span>layout <span class="ot">&lt;-</span> igraph<span class="sc">::</span>layout_with_kk</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(graph)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>A detailed version of the <a href="https://api.epigraphdb.org/meta/schema?graphviz=true&amp;plot=true">schema_plot</a> can be obtained from the API.</p>
 </div>
 </div>
@@ -543,231 +346,214 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </ul>
 <p>Here we show how these are done at the API level using <code>Gwas</code> nodes as an example.</p>
 <p>First we need to know what the “ID” and “name” fields are for the meta nodes using <code>GET /meta/nodes/id-name-schema</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>endpoint &lt;-<span class="st"> &quot;/meta/nodes/id-name-schema&quot;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>meta_node_fields &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>  <span class="dt">route =</span> endpoint, <span class="dt">params =</span> <span class="ot">NULL</span>, <span class="dt">mode =</span> <span class="st">&quot;raw&quot;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>meta_node_fields</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="co">#&gt; $Disease</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a><span class="co">#&gt; $Disease$id</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a><span class="co">#&gt; $Disease$name</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a><span class="co">#&gt; $Drug</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true"></a><span class="co">#&gt; $Drug$id</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true"></a><span class="co">#&gt; $Drug$name</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true"></a><span class="co">#&gt; $Efo</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true"></a><span class="co">#&gt; $Efo$id</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true"></a><span class="co">#&gt; $Efo$name</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;value&quot;</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true"></a><span class="co">#&gt; $Event</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true"></a><span class="co">#&gt; $Event$id</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;reactome_id&quot;</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true"></a><span class="co">#&gt; $Event$name</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true"></a><span class="co">#&gt; $Gene</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true"></a><span class="co">#&gt; $Gene$id</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;ensembl_id&quot;</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true"></a><span class="co">#&gt; $Gene$name</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true"></a><span class="co">#&gt; $Tissue</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true"></a><span class="co">#&gt; $Tissue$id</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;tissue&quot;</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true"></a><span class="co">#&gt; $Tissue$name</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;tissue&quot;</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true"></a><span class="co">#&gt; $Gwas</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true"></a><span class="co">#&gt; $Gwas$id</span></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true"></a><span class="co">#&gt; $Gwas$name</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;trait&quot;</span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true"></a><span class="co">#&gt; $Literature</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true"></a><span class="co">#&gt; $Literature$id</span></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;pubmed_id&quot;</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true"></a><span class="co">#&gt; $Literature$name</span></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;pubmed_id&quot;</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true"></a><span class="co">#&gt; $Pathway</span></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true"></a><span class="co">#&gt; $Pathway$id</span></span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;reactome_id&quot;</span></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true"></a><span class="co">#&gt; $Pathway$name</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true"></a><span class="co">#&gt; $Protein</span></span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true"></a><span class="co">#&gt; $Protein$id</span></span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;uniprot_id&quot;</span></span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true"></a><span class="co">#&gt; $Protein$name</span></span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;uniprot_id&quot;</span></span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true"></a><span class="co">#&gt; $SemmedTerm</span></span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true"></a><span class="co">#&gt; $SemmedTerm$id</span></span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true"></a><span class="co">#&gt; $SemmedTerm$name</span></span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true"></a><span class="co">#&gt; $Variant</span></span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true"></a><span class="co">#&gt; $Variant$id</span></span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true"></a><span class="co">#&gt; $Variant$name</span></span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/meta/nodes/id-name-schema&quot;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>meta_node_fields <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> <span class="cn">NULL</span>, <span class="at">mode =</span> <span class="st">&quot;raw&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>meta_node_fields</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Disease</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Disease$id</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Disease$name</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Drug</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Drug$id</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Drug$name</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Efo</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Efo$id</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Efo$name</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;value&quot;</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gene</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gene$id</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ensembl_id&quot;</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gene$name</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gwas</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gwas$id</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gwas$name</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;trait&quot;</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Literature</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Literature$id</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Literature$name</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTerm</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTerm$id</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTerm$name</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTriple</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTriple$id</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTriple$name</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Pathway</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Pathway$id</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Pathway$name</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Protein</span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Protein$id</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;uniprot_id&quot;</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Protein$name</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;uniprot_id&quot;</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Tissue</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Tissue$id</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Tissue$name</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Variant</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Variant$id</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Variant$name</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span></code></pre></div>
 </div>
 <div id="fuzzy-matching" class="section level2">
 <h2>Fuzzy matching</h2>
 <p>Here we search for nodes can contain “body mass index” in their traits.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>name &lt;-<span class="st"> &quot;body mass index&quot;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>endpoint &lt;-<span class="st"> &quot;/meta/nodes/Gwas/search&quot;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>params &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">name =</span> name)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>results &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>  <span class="dt">route =</span> endpoint, <span class="dt">params =</span> params, <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a>results</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 10 x 18</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="co">#&gt;    node.note node.access node.year node.mr node.author node.consortium node.sex</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;   </span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="co">#&gt;  1 NA        public      2018      1       Hoffmann TJ NA              NA      </span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="co">#&gt;  2 &lt;NA&gt;      public      2015      1       Locke AE    NA              Males a…</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a><span class="co">#&gt;  3 &lt;NA&gt;      public      2015      1       Locke AE    NA              Males   </span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="co">#&gt;  4 &lt;NA&gt;      public      2015      1       Locke AE    NA              Males a…</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a><span class="co">#&gt;  5 NA        public      2017      1       Akiyama M   NA              NA      </span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a><span class="co">#&gt;  6 Dominanc… public      2016      0       Wood        NA              Males a…</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a><span class="co">#&gt;  7 &lt;NA&gt;      public      2015      1       Locke AE    NA              Females </span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true"></a><span class="co">#&gt;  8 &lt;NA&gt;      public      2013      1       Randall JC  NA              Females </span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true"></a><span class="co">#&gt;  9 &lt;NA&gt;      public      2013      1       Randall JC  NA              Males   </span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true"></a><span class="co">#&gt; 10 21001: O… public      2018      1       Ben Elswor… MRC-IEU         Males a…</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true"></a><span class="co">#&gt; # … with 11 more variables: node.priority &lt;chr&gt;, node.pmid &lt;chr&gt;,</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true"></a><span class="co">#&gt; #   node.population &lt;chr&gt;, node.unit &lt;chr&gt;, node.sample_size &lt;chr&gt;,</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true"></a><span class="co">#&gt; #   node.nsnp &lt;chr&gt;, node.trait &lt;chr&gt;, node.id &lt;chr&gt;, node.subcategory &lt;chr&gt;,</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true"></a><span class="co">#&gt; #   node.category &lt;chr&gt;, node.sd &lt;chr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">&quot;body mass index&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/meta/nodes/Gwas/search&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> name)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> params, <span class="at">mode =</span> <span class="st">&quot;table&quot;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 x 18</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    node.note        node._name  node.year node.mr node.author node.sex node.pmid</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;    </span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Dominance model… Body mass … 2016.0    0       Wood        Males a… 26961502…</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Females  25673413…</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 &lt;NA&gt;             Body mass … 2013.0    1       Randall JC  Females  23754948…</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 &lt;NA&gt;             Body mass … 2017.0    1       Akiyama M   &lt;NA&gt;     28892062…</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 &lt;NA&gt;             Body mass … 2018.0    1       Hoffmann TJ &lt;NA&gt;     30108127…</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 &lt;NA&gt;             Body mass … 2019.0    1       Ishigaki K  Males    28892062…</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Males a… 25673413…</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Males a… 25673413…</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Males    25673413…</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 &lt;NA&gt;             Body mass … 2019.0    1       Ishigaki K  Males a… 28892062…</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 11 more variables: node.population &lt;chr&gt;, node.sample_size &lt;chr&gt;,</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.nsnp &lt;chr&gt;, node.build &lt;chr&gt;, node.trait &lt;chr&gt;, node._source &lt;list&gt;,</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.id &lt;chr&gt;, node._id &lt;chr&gt;, node.subcategory &lt;chr&gt;, node.category &lt;chr&gt;,</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.sd &lt;chr&gt;</span></span></code></pre></div>
 </div>
 <div id="exact-matching" class="section level2">
 <h2>Exact matching</h2>
 <p>Similarly, we can exact match a specific node by its ID.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>id &lt;-<span class="st"> &quot;ieu-a-2&quot;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>endpoint &lt;-<span class="st"> &quot;/meta/nodes/Gwas/search&quot;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>params &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">id =</span> id)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>results &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>  <span class="dt">route =</span> endpoint, <span class="dt">params =</span> params, <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>results</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 1 x 17</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a><span class="co">#&gt;   node.access node.year node.mr node.author node.consortium node.sex</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;lgl&gt;           &lt;chr&gt;   </span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a><span class="co">#&gt; 1 public      2015      1       Locke AE    NA              Males a…</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a><span class="co">#&gt; # … with 11 more variables: node.priority &lt;chr&gt;, node.pmid &lt;chr&gt;,</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true"></a><span class="co">#&gt; #   node.population &lt;chr&gt;, node.sd &lt;chr&gt;, node.unit &lt;lgl&gt;,</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true"></a><span class="co">#&gt; #   node.sample_size &lt;chr&gt;, node.nsnp &lt;chr&gt;, node.trait &lt;chr&gt;, node.id &lt;chr&gt;,</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true"></a><span class="co">#&gt; #   node.subcategory &lt;chr&gt;, node.category &lt;chr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">&quot;ieu-a-2&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/meta/nodes/Gwas/search&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">id =</span> id)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> params, <span class="at">mode =</span> <span class="st">&quot;table&quot;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 x 17</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   node._name  node.year node.mr node.author node.sex   node.pmid node.population</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;          </span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Body mass … 2015.0    1       Locke AE    Males and… 25673413… Mixed          </span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 10 more variables: node.sd &lt;chr&gt;, node.sample_size &lt;chr&gt;,</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.nsnp &lt;chr&gt;, node.build &lt;chr&gt;, node.trait &lt;chr&gt;, node._source &lt;list&gt;,</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.id &lt;chr&gt;, node._id &lt;chr&gt;, node.subcategory &lt;chr&gt;, node.category &lt;chr&gt;</span></span></code></pre></div>
 </div>
 <div id="cypher-advanced" class="section level2">
 <h2>Cypher (advanced)</h2>
 <p>Advanced users that are familiar with Neo4j Cypher can query the database using Cypher directly.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>query &lt;-<span class="st"> &quot;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="st">    MATCH (exposure:Gwas)-[mr:MR]-&gt;(outcome:Gwas)</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="st">    WHERE exposure.trait = &#39;Body mass index&#39;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="st">    RETURN exposure, outcome, mr LIMIT 2</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="st">&quot;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>endpoint &lt;-<span class="st"> &quot;/cypher&quot;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>params &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">query =</span> query)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a><span class="co"># </span><span class="al">NOTE</span><span class="co"> this is a POST request</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true"></a>results &lt;-<span class="st"> </span><span class="kw">query_epigraphdb</span>(</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true"></a>  <span class="dt">route =</span> endpoint, <span class="dt">params =</span> params, <span class="dt">method =</span> <span class="st">&quot;POST&quot;</span>,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true"></a>  <span class="dt">mode =</span> <span class="st">&quot;table&quot;</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true"></a>)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true"></a>results</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 2 x 45</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true"></a><span class="co">#&gt;   exposure.access exposure.year exposure.mr exposure.author exposure.consor…</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;           &lt;lgl&gt;           </span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true"></a><span class="co">#&gt; 1 public          2015          1           Locke AE        NA              </span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true"></a><span class="co">#&gt; 2 public          2015          1           Locke AE        NA              </span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true"></a><span class="co">#&gt; # … with 40 more variables: exposure.sex &lt;chr&gt;, exposure.priority &lt;chr&gt;,</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true"></a><span class="co">#&gt; #   exposure.pmid &lt;chr&gt;, exposure.population &lt;chr&gt;, exposure.sd &lt;chr&gt;,</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true"></a><span class="co">#&gt; #   exposure.unit &lt;lgl&gt;, exposure.sample_size &lt;chr&gt;, exposure.nsnp &lt;chr&gt;,</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true"></a><span class="co">#&gt; #   exposure.trait &lt;chr&gt;, exposure.id &lt;chr&gt;, exposure.subcategory &lt;chr&gt;,</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true"></a><span class="co">#&gt; #   exposure.category &lt;chr&gt;, outcome.note &lt;lgl&gt;, outcome.ncase &lt;chr&gt;,</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true"></a><span class="co">#&gt; #   outcome.access &lt;chr&gt;, outcome.year &lt;chr&gt;, outcome.mr &lt;chr&gt;,</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true"></a><span class="co">#&gt; #   outcome.author &lt;chr&gt;, outcome.consortium &lt;chr&gt;, outcome.sex &lt;chr&gt;,</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true"></a><span class="co">#&gt; #   outcome.priority &lt;chr&gt;, outcome.population &lt;chr&gt;, outcome.unit &lt;chr&gt;,</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true"></a><span class="co">#&gt; #   outcome.sample_size &lt;chr&gt;, outcome.nsnp &lt;chr&gt;, outcome.ncontrol &lt;chr&gt;,</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true"></a><span class="co">#&gt; #   outcome.trait &lt;chr&gt;, outcome.id &lt;chr&gt;, outcome.subcategory &lt;lgl&gt;,</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true"></a><span class="co">#&gt; #   outcome.category &lt;lgl&gt;, mr.b &lt;dbl&gt;, mr.se &lt;dbl&gt;, mr.method &lt;chr&gt;,</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true"></a><span class="co">#&gt; #   mr.nsnp &lt;int&gt;, mr.selection &lt;chr&gt;, mr.pval &lt;dbl&gt;, mr.ci_upp &lt;dbl&gt;,</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true"></a><span class="co">#&gt; #   mr.log10pval &lt;dbl&gt;, mr.ci_low &lt;dbl&gt;, mr.moescore &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="st">    MATCH (exposure:Gwas)-[mr:MR]-&gt;(outcome:Gwas)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE exposure.trait = &#39;Body mass index&#39;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">    RETURN exposure, outcome, mr LIMIT 2</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/cypher&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">query =</span> query)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co"> this is a POST request</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> params, <span class="at">method =</span> <span class="st">&quot;POST&quot;</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;table&quot;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 0 x 0</span></span></code></pre></div>
 </div>
 <div id="sessioninfo" class="section level2">
 <h2><code>sessionInfo</code></h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="kw">sessionInfo</span>()</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="co">#&gt; R version 4.0.2 (2020-06-22)</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="co">#&gt; Running under: Manjaro Linux</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="co">#&gt; Matrix products: default</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="co">#&gt; BLAS:   /usr/lib/libblas.so.3.9.0</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a><span class="co">#&gt; LAPACK: /usr/lib/liblapack.so.3.9.0</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a><span class="co">#&gt; locale:</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a><span class="co">#&gt;  [1] LC_CTYPE=en_GB.UTF-8       LC_NUMERIC=C              </span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a><span class="co">#&gt;  [3] LC_TIME=en_GB.UTF-8        LC_COLLATE=C              </span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a><span class="co">#&gt;  [5] LC_MONETARY=en_GB.UTF-8    LC_MESSAGES=en_GB.UTF-8   </span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a><span class="co">#&gt;  [7] LC_PAPER=en_GB.UTF-8       LC_NAME=C                 </span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a><span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true"></a><span class="co">#&gt; [11] LC_MEASUREMENT=en_GB.UTF-8 LC_IDENTIFICATION=C       </span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true"></a><span class="co">#&gt; attached base packages:</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true"></a><span class="co">#&gt; other attached packages:</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true"></a><span class="co">#&gt; [1] ggplot2_3.3.2    epigraphdb_0.2.1 igraph_1.2.5     glue_1.4.1      </span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true"></a><span class="co">#&gt; [5] purrr_0.3.4      dplyr_1.0.2      magrittr_1.5    </span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true"></a><span class="co">#&gt;  [1] Rcpp_1.0.4.6     pillar_1.4.6     compiler_4.0.2   tools_4.0.2     </span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true"></a><span class="co">#&gt;  [5] digest_0.6.25    jsonlite_1.7.0   evaluate_0.14    lifecycle_0.2.0 </span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true"></a><span class="co">#&gt;  [9] tibble_3.0.3     gtable_0.3.0     pkgconfig_2.0.3  rlang_0.4.7     </span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true"></a><span class="co">#&gt; [13] cli_2.0.2        curl_4.3         yaml_2.2.1       xfun_0.14       </span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true"></a><span class="co">#&gt; [17] withr_2.2.0      httr_1.4.2       stringr_1.4.0    knitr_1.28      </span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true"></a><span class="co">#&gt; [21] generics_0.0.2   vctrs_0.3.2      gtools_3.8.2     grid_4.0.2      </span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true"></a><span class="co">#&gt; [25] tidyselect_1.1.0 R6_2.4.1         fansi_0.4.1      rmarkdown_2.1   </span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true"></a><span class="co">#&gt; [29] farver_2.0.3     scales_1.1.1     ellipsis_0.3.1   htmltools_0.4.0 </span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true"></a><span class="co">#&gt; [33] assertthat_0.2.1 colorspace_1.4-1 labeling_0.3     utf8_1.1.4      </span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true"></a><span class="co">#&gt; [37] stringi_1.4.6    munsell_0.5.0    crayon_1.3.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.0.4 (2021-02-15)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Manjaro Linux</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /usr/lib/libblas.so.3.9.0</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /usr/lib/liblapack.so.3.9.0</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; locale:</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] LC_CTYPE=en_GB.UTF-8       LC_NUMERIC=C              </span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] LC_TIME=en_GB.UTF-8        LC_COLLATE=C              </span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] LC_MONETARY=en_GB.UTF-8    LC_MESSAGES=en_GB.UTF-8   </span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] LC_PAPER=en_GB.UTF-8       LC_NAME=C                 </span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] LC_MEASUREMENT=en_GB.UTF-8 LC_IDENTIFICATION=C       </span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attached base packages:</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; other attached packages:</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] ggplot2_3.3.2    epigraphdb_0.2.2 igraph_1.2.6     glue_1.4.2      </span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] purrr_0.3.4      dplyr_1.0.2      magrittr_2.0.1  </span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] pillar_1.5.1      compiler_4.0.4    highr_0.8         tools_4.0.4      </span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] digest_0.6.27     gtable_0.3.0      jsonlite_1.7.2    evaluate_0.14    </span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] lifecycle_1.0.0   tibble_3.1.0      debugme_1.1.0     pkgconfig_2.0.3  </span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] rlang_0.4.10      cli_2.3.1         rstudioapi_0.13   curl_4.3         </span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] yaml_2.2.1        xfun_0.21         withr_2.4.1       stringr_1.4.0    </span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] httr_1.4.2        knitr_1.31        generics_0.1.0    vctrs_0.3.6      </span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] gtools_3.8.2      grid_4.0.4        tidyselect_1.1.0  R6_2.5.0         </span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [29] fansi_0.4.2       rmarkdown_2.1     farver_2.1.0      scales_1.1.1     </span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [33] ps_1.6.0          ellipsis_0.3.1    htmltools_0.5.1.1 assertthat_0.2.1 </span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] colorspace_2.0-0  labeling_0.4.2    utf8_1.2.1        stringi_1.5.3    </span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [41] munsell_0.5.0     crayon_1.4.1</span></span></code></pre></div>
 </div>
 
 
