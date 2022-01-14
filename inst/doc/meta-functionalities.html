@@ -16,8 +16,24 @@
 
 <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
@@ -108,6 +124,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+
 <link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
 
 
@@ -139,8 +156,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;magrittr&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;purrr&quot;</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;igraph&quot;</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;epigraphdb&quot;</span>)</span></code></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;purrr&#39;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:magrittr&#39;:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     set_names</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;igraph&quot;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;igraph&#39;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     compose, simplify</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     as_data_frame, groups, union</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     decompose, spectrum</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:base&#39;:</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     union</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;epigraphdb&quot;</span>)</span></code></pre></div>
 <div id="metadata" class="section level2">
 <h2>Metadata</h2>
 <p>Here we query for the metadata information using the endpoint <code>GET /meta/schema</code>, which will be used for downstream processing.</p>
@@ -183,8 +219,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MR_EVE_MR                   :List of 2</span></span>
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ OPENGWAS_TOPHITS            :List of 2</span></span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ VARIANT_TO_GENE             :List of 2</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MEDRXIV_OBJ                 :List of 2</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MEDRXIV_PREDICATE           :List of 2</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MEDRXIV_PREDICATE           :List of 2</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MEDRXIV_OBJ                 :List of 2</span></span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ EXPRESSED_IN                :List of 2</span></span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ BIORXIV_OBJ                 :List of 2</span></span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ EFO_CHILD_OF                :List of 2</span></span>
@@ -210,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GWAS_TO_LITERATURE          :List of 2</span></span>
 <span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ GENE_TO_PROTEIN             :List of 2</span></span>
 <span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ SEMMEDDB_OBJ                :List of 2</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ connections:List of 38</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ connections:List of 41</span></span>
 <span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
 <span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
 <span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
@@ -248,7 +284,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
 <span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
 <span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span></code></pre></div>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 4</span></span></code></pre></div>
 <div id="meta-nodes" class="section level3">
 <h3>Meta nodes</h3>
 <p>We can extract the specific meta node information as a dataframe from the metadata.</p>
@@ -268,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>meta_node_df <span class="sc">%&gt;%</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(meta_node) <span class="sc">%&gt;%</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">count =</span> <span class="fu">format</span>(count, <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>))</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 2</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 × 2</span></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    meta_node        count      </span></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;      </span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Disease          &quot;   38,960&quot;</span></span>
@@ -298,43 +337,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(meta_rel, count)</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  } <span class="sc">%&gt;%</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    metadata <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&quot;connections&quot;</span>) <span class="sc">%&gt;%</span> {</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">transpose</span>(.) <span class="sc">%&gt;%</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">meta_rel =</span> <span class="fu">flatten_chr</span>(rel)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate_at</span>(<span class="fu">vars</span>(from_node, to_node), flatten_chr) <span class="sc">%&gt;%</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(meta_rel, from_node, to_node)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Joining, by = &quot;meta_rel&quot;</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>meta_rel_df <span class="sc">%&gt;%</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(from_node, to_node) <span class="sc">%&gt;%</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">count =</span> <span class="fu">format</span>(count, <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>))</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 38 x 4</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    meta_rel                     count        from_node to_node       </span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                        &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;         </span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 MONDO_MAP_EFO                &quot;     2,819&quot; Disease   Efo           </span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 MONDO_MAP_UMLS               &quot;     8,247&quot; Disease   LiteratureTerm</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 OPENTARGETS_DRUG_TO_DISEASE  &quot;     2,461&quot; Drug      Disease       </span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 CPIC                         &quot;       375&quot; Drug      Gene          </span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 OPENTARGETS_DRUG_TO_TARGET   &quot;     6,534&quot; Drug      Gene          </span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 EFO_CHILD_OF                 &quot;    43,132&quot; Efo       Efo           </span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 GENE_TO_DISEASE              &quot;     5,763&quot; Gene      Disease       </span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 XQTL_MULTI_SNP_MR            &quot; 3,015,233&quot; Gene      Gwas          </span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 XQTL_SINGLE_SNP_MR_GENE_GWAS &quot; 8,449,779&quot; Gene      Gwas          </span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 GENE_TO_PROTEIN              &quot;    19,142&quot; Gene      Protein       </span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 28 more rows</span></span></code></pre></div>
-</div>
-<div id="schema-plot" class="section level3">
-<h3>Schema plot</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>graph <span class="ot">&lt;-</span> meta_rel_df <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(from_node, to_node) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  igraph<span class="sc">::</span><span class="fu">graph_from_data_frame</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>graph<span class="sc">$</span>layout <span class="ot">&lt;-</span> igraph<span class="sc">::</span>layout_with_kk</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(graph)</span></code></pre></div>
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAgAElEQVR4nO3dd1wT9/8H8E8GCQmQhCRAQthLQKYIKDhxW7dWq9Zq62i1/ba29qu1S6ptHbX9ulqtE1utdVEVHAgqiDKUvWXvkYRAAmQn9/vjbKQ4vv196znfzz/6gMvd5+6Cr97n7j6DhGEYAgAQg/y0DwCAFxkEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACUZ/2AYAnoaxM5uNz0Nub6+bGaWhQFBZKR450MjMjFxZKMAxlZMyPjPztjz+mhYYKnvaRvmggYC8FlUr/1lv+Bw6MQwht356zcuXV//xnZGCgjVZriIo6weMx5s3zcXJi9dmqoqLi999/r6mpcXd3nz9/vouLy1M49OccVBFfChQK6e23A+5fTqNRFi3ys7Q027JluJ0ds/dHu3btihzoJc78MoB8qPHG56GBrocOHXpSx/vigCvYSyEgwOZhHy1Z4o8QqqtTYBjm4sIWi5VffZVmY6P/blPi6hkDl43Nkios82vGLB7d8u47Z6RSl3nzQhctunjjRpNKtbKpqTs6+ub+/YVFRYv69+cjhPbuLSgqkmZmtvj68nbuHGVpafbkTvKZBFewl113t27dupuurntv3mxGCG3alBkSYodh6a8PT9LprRBCu86PDHBp/GByxsyIpOTkbJHIcs4cb3xbkchyxYpgU1HHj5fJ5ZodO6Ju3JibkFDz6aepT+WMnikQsJedpaXZ558P7r0kJqa4oUHqJlBODCnElxy/EapQMtzslAKBBCFkZnbvnw2Ndu/n9evTa2vlX32V9u23GZaWtPj4qidyBs80qCICZGZGplDu5mTp0oADB47m5bmGuwW8MbIAITR/eOax1LBhn/7bS3Rm9jsODytEqzWUl3dcuzbH1paJEFq3LuLJHPwzDq5g4C98fHhZWQv69eMl5S/48rcRCCFPe/Glddv5LOmNkgVise/DNlQq9Xq9saqq88kd6/MAAgb+IimpztPT+tatN6dP5xxIGv3ObvL7+zw3nZbKjedmz7bZsaPYYMAQQkYjhmEIIaTXY/iGHA6dyzXfv7/QVNTly7VP4QSeMRCwl45KpUMIaTR60xKjETMYjAaDESF0/HiZQqElkdDGjTP4fNaAiV9Wq9+csuzXkpLi9esnW1rSKBSSo6OVVms4c6ZCrdbHxpYjhCorOxFCb73lf/Bg4ddfZxQVSX/+OT8trfkpneIzhBIdHf20jwE8OcePl+3YkSuVqqRSlVBo4eLClss1e/cWXLpUg2EoJMSuoEBy+HCxXK6Ni6uaMoWxaNHUpibzrCykVpPi4qrWrYtwdma5uLCrqjo3bsxMS2teujQwO7uNz2cMHGg3apRTe7sqJqb46NESd3fOunURZDLpaZ/xU0a6e6UH4K+USmViYuKUKVNIpJc9JP8EVBHBgzU0NDg4OEC6/iEIGHiw+vp6R0fHp30Uzz0IGHiAnp4elUplY/PQBlbgb4IXzc8NiUR54EDhp5+mUqnk2bP7UShkg8FIIpEWL/YfMeIxX2rwyxfUD/85eMjxnHF338dm03Ny3kAIYRiKi6uaPz9+xgyvH38c/Rhb1iYkJISEhPD5/MdV4EsLqoiPTX6+5Pffy4jeC41GMTVrIpHQlCnuhw9P/PXX4s8/f2wta7u6urRaLY/He1wFvswgYHcVFkrnzIkjkbZ6ex9csODCtGlnxo07dfFizd/c/Natltmzz/38cz6hB/lAM2Z4TpjgtmtXbmNjl1yu2bUrNzDwcEJCiYPDDwEBG7dtOzRy5DEGYxtCqKmpe+nSBBJpa3GxFN+2qEj60UfX5s6NHzXqRElJO74Q6oePEQTsLn9/Pt6ofNGi/r/+OvHMmWmvveY9ceLp7767/bBNdDrj119n4D+HhQkf+43Q3xcWJjAYsPx8icGAtbR0FxRIXn11jRt7PxdLuHbsrby8w0ajEd3Xu0Sp1E2ceHrFiuBff53Y2tozZszJN9+8ZDRiDQ0NTk5OT+tcXjAQsHvwnhem/3O/+aYfn884cKDwgSsbjdjbb1/OzGwxLendasFoNPb09BB5sH/h68tDCDU0dHG55g4OBoTQL+9dP/7v0mOrUvYsRwuHtut0OqlUiv7au+Tq1XqxWOnuzqFSyTNnelGp5EOHxisUcoPBwOVyn9jBv9ggYI9CJpPwjvTV1fK33768c2fOrFnnjh4tRQjl5LTdvt1aVtb+xRc3TDUuhNDOndetraOp1K+5nKHu7u5ff/0zj7fLzW1fZWXn7dut9va7hcLdN240IYSuXq3m8XZmZVXl5NQtXXrJVHhmZotItMfaemdqaiNCSCxWRkWd2Lz51iOOs6ZGjhDq188aIZSSkoIQ8ndWmz51tUNkEvbHH3/02YpKJWs0BvzgBw4U4I+7Ghoa4PXXYwQBe6gjR0qkUtXy5UEIoWXLEmxtmf/614AVK4KWLbus1RoGDhQEBdl6e/M2bBiC95ZHCJWWStet+3TlhA0zB5dwLCbveaP6j0PveHt3GI2YhwcnNFTw/vtBRqPBYKj6448/WloKR4xg9fQ0LllyUS5vCgzsXrDAfdmyy8HBtl9+Obi7W9evHxchZGvL5HDo//536CMONTdXTKGQAgNtEUISieT+FUgkVF9f32fhiBGOY8Y4b9+eLZWq4uIqo6MjEEJQP3y84D1YX8ePlxUVSSUSZU+P7vTpqdOmeSCEZs70GjhQgBCytWUqlTqJRCUSWd6/LYUie2v4zWVj0fmsklNpA10F9F8/1AxevVOhWn3uXD6b3Wk0NovF6vZ2q0mTBh06VPrZZ4IBA+yWLmUPGGBra6vJz8/CC1+wwHft2tR9+wo++2xQQ0OXmxv7Ea1m8/Ml589Xr1kTxuWaI4Ssra3vX8doJAkEQtSrdwlCyNyc+umng27fbj1/vvrjj0P79ePKZDISicThcP7xtwjugitYX3PmeP/668RLl2alps7F04UQWr48yNHRau3a1DVrriOE9HrjA7dVKBRjgxBCiM1UI4S0Ooq1JQrxkDg4GGNi8t3c3JqbbSIjRVeutNNotNu3WwcMsMMLd3Zm793bGBurwQtnMs2WLPHfsydfrzfGxlbMm+dj2oVGY8D7leDy8yUTJpwaMkT05Zd3exBHRg5FCLV03PvLGo2dRoxibh7Sp3dJTY08Ojptzpx+c+d641dLqB8+dnAF+1vOnq385puMgwfHL1rU/8KF6kes+cD39gEBumvXZO3tap3O+MEHA95998q77wZ7elr3KTwqyio5uRVf+O67wT/8kHXmTGVBgeSDDwYghPCeILW1ciqVvGjRRTKZhGFIodAcPDh+/HhXfKv6ekVamhohNC56+KuR6f0dFWVNKDarPTKSsXJlxsmTDdHRkefOVRUVSceMce7u1uXktDk770UI0WiUkSMdJ0wgLVo0+rF9awAC1tvD2rQolbr5888fPjzBz49fVibr/VGfSxmbzU7MQwEu95bIulFuNdrzWcDly+XvvJM8axbL3p6tUmkXL7548uRUU+GHDo2zsOgqL68wbejszJo2zXP9+rTZs+8O4cTjMVatGrhq1cBHnIKTE+vkySkIoYqKqSdPniytrMQcsG2vj7C2tg4JCRGJRAih3Nw38JU5HPrnnw+KjBS1tPR0dWmrq8W//FL+wQfsv/dtgb8FAnaPWq03/bc3lUqv0RiystomTnS7dKkGISSVqng8BodDT0tr0uuNdXUKd3eOTmcUCh1+uyW0MG9xtqEghPLrKFtOo3dXfhYe7h8W1tLZqZs0KZBEIg0dat3UJM/NTb5zh6lUIrVaf+zYDQ7HQy4XIFSHF25pabZ6dWh4+NHYWO//4Vw8PT0//fRThNC5c+f0ev2QIUPS09Pb29v9/f1N7yHmzYs/fHiim9vdROXm5up08HjjMYMezXeVlLRv2JBRUtLe1NTN5zP9/e81w2MyzfR64969+enpLe++G3TtWkNSUt3UqR6uruxDh4pSUhonT3ZvaOj+7rvbdXXd69f/K6VIuf24s9Fod62M/dmGlatWfWRtbW1nxwkO5ltY9NTX17u4CIYM6Tdp0kAej2dvb4NhpHPn2pqazFauDDUVzmLRhELL5OSGR1+y/qv29vbu7u7+/fu7ublVVlY2NTXhvbyMRmzlyqtqtd7BwYrNptfXK7ZuvT51arCbG7wBe5ygsS8hjEajWq1mMpn3f9Td3V1dXV1TU2Nra+vl5fWIJn+pqY3Fxe3vvBP4T46kvLy8tLQ0MjKSz+cbjcbMzEwMwyIiIvDy9+0rSE9vtrY2Dwy0jooizZ078Z/sC9wPAkashITatWuv5+aKR450EgiYMpna2tr8yy8He3iwamtry8vLaTSap6ens7OzqeZmNGK3brW6ubHfe+/KwYPj/04b+Q8/vNbU1H3ixOT7P5LJZNevX/fz8/Pw8EAIGY3Gq1evenh49JnJITs728LCwtv7f6mOgkeAezBijRvnUl4uy829+u23QwcNEhoM2LJllwMCDqekvBYR4enh4dHS0lJRUVFYWOjm5ubp6Umj0e7ckQ0efJREQj/8EH7kyIHGxkYu143BCFi+/KF1xZEjnTo61A/8yNra2mAwtLW14QEjk8mBgYFZWVm9A4ZhWFNTU1RU1OM+ewABIx6NRkEI4dcnCoX00UchBw8W/vJLcUSEPYlEsre3t7e37+joqKqqunjxokgk8vLySkubd/782W/WDRs/AHEtmbuuLkNmZ318PhwxYkTvkru7u6VSaWdnJ4/Xw2brb968aWlpKRQKbW1tTeuQSCQul9vW1qZWq83NzRFCNjY2BoOhq6vLysoKX0csFltYWFhaPuDVOfiHIGBPGt4mw86OmZ7evG9fgZMTS6s1HDxYePHirEGDvD75JJFKLSkt7czJSj3/hbm3SB1328Ng5LtylJMn76qo8FerqZs2pTc1yUpLZa+/zp8wwZXD4XA4vMLCzgEDuBcvVsXEZLq4WPj7u+/bV2RmRj5zZpqtra3RaMzKyhoyZAh+DHw+v7293RQwGH6DONCS44kyGrFt27Ktrc3nzvWxsqLFxVXFx1dNmuS+cKEfi0WbNi1u7tyQPXvme3rmOtswV8csxjDS5NACK4Z6+qA7w/qdjo09NX3672PGaDZs8F22LHjz5lYHh/4dHaxJk6589FGmSCR6662hHR1maWlykUiVnb0AIbR58y28Y7JOp7t16xZ+y81msxUKxZ+HZGxubnZweOig8+CfgIA9IV99lTZvXvzQocckElVKymve3lw/P76zM2vAALuICPvNm4eVl3fk50vGjnWhUChdXV3TwlOyKl1ulHqYSnC1Q8eOFXR26gsKeGfPKisre9Rq/ZUrdYMGCU1NushkklBoERHhyOWqurt1vr68O3dkPB6vpaUjICBUo9GkpqZqtVorK6uuri58k7a2NhaL9cAHnuCfgyriE7JuXUR4uLDPQhKJxGbT8Z/z88Xm5nf/HAKBgCJuQggV19sP9b3bvKNBigwUGy8vqp9fC4vFEgqFX33ljzfMZTB6/x1Jubktqam68eOp7e3q6mp5WNhvra2dXG79hAlDCgoKEhMT/fz8lEolvjbUDwkFAXtWkMmkjg61SqVnMKhz5859beqPTLqGSdfinzbLUEat7fTpYTU1yoiIwdXV1ZWVlVVVVXhX5YoKpVqtzs/PNxiwW7caMYyUm/u6hwf/ww+vaTT6336bFB7+S1ubjEQiBQYG8vn8zMzMixcvbt26VSqVWllZbdmy5ame+osMqoiE+5svGvGW9TdvNiGEIiMj3/lws1JDz66qj7mK5Er0ezrr0KFDvr6C5OQGtdpi6NCh06dPHzJkWHW1tUgkIpFIBoOhtrZ25868ri5Dv34MiaSiuLi4p6fHaDS6urLXrQtpa7vbipLH43333daSG2cnOGZvnJIzzillyrjwmJiYhoYuhJBEojQNzoEzGrE7d2QwL9H/Bq5ghHtYE0eEkMFgNDUXHj3aedgwhz178kePdkYIOTtPGj8+L3jYu42NjWwuZ+jQN8eOHW9rK6ZSybNmndu6dQSNRo6JKf7880GuruxLl4zm5qqpU6cuW/YTg0H18hIIhcKOjg6JRNbeLj937pyPj1VLi7qmpobL5W7evK+50n7pWMqx6wEW5toD7x124lsvWprv7W184w3/xMTaa9ca1q4NX78+EiFUUyPftCmzf3/+yZN3LC1psbFT/1odBf8NBoiUmFgbGBiD0HcTJ55OSWno/dGJE2UWFtu8vPYnJtbiSxQKzZIll1asSNy1K2fdupsajR5fvmtXDpu9Y/nyRLVaf+1afVDQYQuLbUOG/JaV1Yph2K1bLWFhR8zMvt+9Ow+h72i0H9zc9qanN9++3eLuvo/B+M+BA7lZWRX795+Mi0uKj4+3tFy1Yymn+RAq2G6J0Hdfz49sPoScbCYymd+XlEgxDPviixtc7k5811FRx+vq5BiGtbX1IPTdjh3ZT+yrezFAU6kXx+3brWFhR956y//AgXGmhS0tPQcOFH7xxY3gYPamTaEeHq79+u2aHZkitEYIoVvlrhHeVR9MvjLqi1ES9SsSyYcIodOny2fNOqfRfNjY2B0efuS99+4ORHXjRtOIEY6ffTboaZzc8wou9y8Od3cO+nMAHBOh0GLJEv8vvrgxapQji6UuLW1nMkneosQlY+6tYzCilg5EphuTk5OFQqFOp0UIYRgqLW3ncOgw2/I/AQ85nlfvv3+VRNqKD3GF43LNfXx4eXni7m7d66+fHznyOL7czIyMEGKxLCUSCYVCUirpO+MZt/7s2ynroq87hvhCDxaL5ePjo1Qqi4uLEULZ2dmdnbK6OkVnpwZfs6xM1tWl/YeHPWvWueXLE1NSGvLyxCzWjqioEzk5bZcu1YwcefzHH3P/YeHPILiCPa88PTkIIS+vvwxxs3PnqNGjT3z7bUZMzAR8MmWE0M8/FyCEaDQahmEuLkyDARs5/qf3fvnCmtJowybdKh8cMYw2Z86co0cr7ezs7Ozs6uutEGpks9lmZvV6vfG9906tWxd25kw7iUTBMGQa30qn0+3YsWPv3r011eVOzu4LFy78+OOPGQzG/Yeq1WolEolcLqfRaFyu2U8/jTG1zGSzafjjU29v7qlT5QR+X08JBOx5hbdp7DPa1KhRTqdOTXn33SSFQrtmTZijo9Xu3Xmff34DIZSZ2RIWxmMw1OPGuZ48Wevnt8bFRV1ba7ZuA9/WlnXiRKNSqd2zJ3/BAl+FQoMQio+X+/i4zZmjPnasvLg4OT9fbmVFGT/evq5OlJXVXVQkTUrabd51ZGGoj9R7DMei7Xbcl+OTkg4e/KOtTe3gYBkfX+Xvr+3oaCsr6yopUXO5lNBQBoVC8vfXnzp10snJKTw8vPeRu7iwZ8zwyslpu369USSynD7dk0olI4Rqa+XNzT0ODpYXLtQsWOBrYWFWWtpeX981cqRjbGyFRmOYNcvLwsLs6tX6ggLJlCkepg7azwgI2Itm5kwvX1/eunVpUVHHw8KE1tbmLBZt2bKAjRuHVVVVfP99zpgxIiq1Iy1N1dREOXNm/LlzRWvXltvY0HQ64wcfXGWz6Z9+esPLi4sQtn9/gZ8f/5tvhty82VxRoVywoN+SJfZ37hSRSMqNGyvZ5k3ZPyAKuXTyN6OEHMHPKwqGrtX263dwyhRnmUyWkdHz8cc2zc3I3p67fHngZ5+lFRSgxMTZOp329u3bdXV1prZaJidP3mGxaMOGOaxenfLzz/mJibP37St4772k2bP7kUik2NgKV1c2jUaeP/+8iws7OdlRKLT4z3+yU1Mb3dw4lpZmly7V/PBDVk3NMgrlGRpVHwL2AmIwqPjrtaNHX0EInT1baWdnQaGQZDLq9ettr7zCnDJlRF0dbfToE2KxeupUu3PnZHZ2Vtu2eVVXt0ZFiRYu7LlxY25YmHDXrty9e/MLChYhhBwdf3Z15QcFBSAUoFQq6fQ7/UQIn+ZFyJEjhEgk9OaojM3nxpeWtm7a5OTs7EOj8d5778rBg68ghNauHTR69Ilr1+qjopwiIyPr6uoyMzN7H3NpaXtCQu3Vq7N7r7xsWcD27dn19V3Xr7+2bZuKy2WQSGjECMe6OsXGjUMRQj09uk8/TRWLV9jYMKdN83B23pufL8brnM8ICNgLyMWFPWCAXWFh3yF+b9/uVCp1sbFd9vZihNDs2RwLCyqJRDI3p4SFCQYMGGBuXpKRkdrQsNjOjn3njiwhobarS3d/+Uwmk0Qike97QEalIjLZ4OFBs7S09PCwj4mpUCp1X32Vhn8aHR1hZUXDf77/Vu3KlfoHrsxkmoWFCRBCPN7dTeh0Kot1twGnqysbIWRjw0QIcbkMhJBYrPz/fl2EgoC9mB4491B6eoVIRPvyy8H4+G0nTzb5+3Pq6xXozykvfH196XR6QsK1+Hjk4cELDLQpKpLeX47RaKRSqdWtfZcnFyIul8vhcDo7Oy9cuHDpkpzDMXv/fZ8+gw1XVlbm5ub2yVhFRYeXl/UDXwk8YiKl3p/gP5se7TwjIGAvmuJiqWms/N5qa2vJZE1FhV4qbReJRDqdjkQi3bkjs7Sk9G5swGbbr1p14b33bFetCj56tKpPIRiG1dXVFRcXm5mZGSmiT39Fa2chhJDBiL49hSoV7lwuVyAQzJw5XCwWx8dfTkiQXr6cSCIhMplMJpObmrR2dmSEEJvNHjduHEI7TSVbW5vHxVVh2L3MlJd39HlG+jyC92DPqwe2wDl9uhwfGhXD7q1ApZKbmzvy8/NnzQptalLt3l2MEFKr1TU1+vx8CZVK7R2whIRaqVQzeXJQcnJyZ6fSNEw3lUqur5ckJiZWV1eHhoZyOBavvDLP3OudwI/ME/NZl/MoxcqRa9as6enp0Wg0CCFbW9v584eIxfq6Oufw8HBnZ2eplNHZyQwICJg5c+a4ceMQQkbjvT0PHmxfUyP//vu7s7HdutWSlycm4nt7wuAK9rzCm7ffvNlkY8MgkUgSifLq1fr169Nra5chhCQSpVyuwS8IPj7c48fLrK37z54tmDTJbe/e6qKi38hkzNxctXmzN4VClsu1LS3deLF4p7Uvvih2cKA0N5e1tPRER6ctXuxqa4udPl1pa+v36qtBtrbWY8a4xMQULVkyIyoqRKk0LyjofPPNZQxGU2dnY35+dVZWlp+f37hxLpMnu3/ySWpcnIhGozg7sw4cmGK6QInFyq4ubU2N3GjEyGQSvvLq1Slnz1b+ufJ4hJBMpjIdG66+XtHdfffOUCZTI4Ta2pR2dkx82J+HDf7ztEBbxOfSpUs1vef+M7G2Nn///QG3b7cmJtbpdAYfH96sWV4JCemJiW1vvBEZFGRrNGJffx2LYbx+/az4/A4Wi5We3nPnTqdAIIiIsMcb8ufmitPSmiZOdGtqKjt9ut7Xl+noSOFyXdPSukeMcAwKskUI6XTGI0dKamsbR43ikUhCgcBCIKBu2HC2pcVoNBoHDRI4OWn8/PxcXFzj46srKjqCg+1Gjbo3bHBFRUd8fDX+wk0otJw1y4vLNTcasbi4qt4rnzpVXlwsJZFIpmNLTm64fr0RITRkiMjVlX38eJlGY+DzGfPm+Zw5U1lfr2Cx6HPnegsEFk/k7/DfQcBecB0dHampqRMmTDAzuzu+Yl5eHp1ONzMza2pqotPpAoGgra2tz2tfhFB7e3tBQUF7e7uLi0tISMgDnzSkpKR4enra29vjv8bHx5uZmQkEgrq6ugEDBpSXlyOEBg0a9DKPRwD3YC+4vLy8gIAAU7oQQjY2NlKpVK1W0+l0g8HAYDDU6r9Uqzo7O9PT09PT052dnYcPH97a2or3m+7DYDC0t7f3HiIOb2nV0NAQHByck5MTHBwsEomSkpLE4hfhbup/AwF7/mzefItE2rppU2ZVVWdycsOHH14TCndv25bd+wk13ti3s7Ozp6fH2dm59+Z8Pl8qlXZ0dOCtEy0sLEyNKhQKRXp6+vXr162trSdOnOjm5mZjY8PhcO6fHRMhJBaLuVwulXrvNl4oFCoUChsbm87OzpCQkNTUVJFINGjQIHzeCWK+jGfeU+uJBv5Xx46VIvRdfHyVaUlycr2Z2fdjxpwwLdHpDGq1Pjs7u6SkpPe2CoVi9erVbDabSUfW1tYLFy7s6uqKjY2VyWS3b98+e/ZsaWmpXq/vvUljY+PVq1fvP4zc3Nw+hev1+tjYWIVCcebMmc7Ozurq6vPnz6vV6ubm5ri4OK1W+3jO/7kCV7Dnz/13Q8OHO27ZMjwxse7w4WJ8CZVKptMpbW1tQqFQLtfs31/422+lV67Ujhs3ri5tS3K0/I+1oreG+5Wl544fP5FCoSQnJzMYTKPROylJdf58ralkuVxz4UJ7XFxjYuK9aQdzctq2bcs+efIOn2/b+zAoFIqdnZ1EIvH398dH53ZwcMjIyBAIBAKBAO8F87KBgL0g5szxRggdP16GEGpt7dm2LfvVV8+q1WpLS9aECadfecVt6lSPd96Jw2Tp/1mMTqWNzKl2GhtUbUYdVJjjU2RZtxoAAB4QSURBVFRUbGtr++9/l4rF6mXLAvbvL8Ab4BsM2IQJpydNch8zxh6fOxchtHnzrczMlvBwm/h46dy5V/o8I3N3d6+oqHBzczMzMysuLvb398cwrKyszM/Pr7a2Vqd7QMOrFxsE7AUhFFoIhRb4gFBqtf769cacnDYGg9HY2FVR0cFm0ywszLy82kYFkiuabZOL+i0cme7v3PT+K9cUKs+8vK6mJnFSUl1QkA2NRhk71uXcuUqEUEODAt9WKOS9/rqzXm/Em+QuXx4kEBiWLvW4cqX+2rW/3J7Z2dmRyeT6+vqwsLCamprm5ubw8PDy8nKNRmNnZ/fAe7kXGwTsxcFgUOl0CvqzsS+GYebm5s7ObAaDOmLE8aIiab9+SgrJeKPUU6Ux+/7smO/PjsmscBnW/7K5Ocnb2/3y5YiwMGHvNr6mbZuaDCNHcqhUsqlJ7rff3q6s1Pduv2sSEhKSl5en1+sjIyOzsrJUKhVeY3R0dGxsbHwK38tTBQF7QcjlmupqOf4WGP15n0Ymk0kkdOrUlJaWngEDfpHJ+iflo+o2vptAsmpq4qqpiR9NSVRrE2fMCPXx8amra5kx49Thw8WBgTamQvBtp01LjompQn82yf3yy8GTJtG//XbkunURoaGCPkfC5XL9/PxSUlJoNFpoaOiNGzf4fD6JRNJoNDKZTKv9p4MOPF+gqdQLIjm5ASE0Y4Zn74VGo1Gp1BmNaNQop8TE2sOHO4TCpQpVXUe3L4aRJAps4ylEsxui03kvWpSYmNi0fDnvk08G/vLL3a77SqUuMNC2qGjR++8n7NhRPmZMFd4kVybroNPp+OvjBzbJdXNzQwhdvXo1JCQkKCgoJSUFfzPG4/Ha2tr+/kjdcXFVP/yQhRCysqKp1Xq9HmOxaN3dWoMBi4py+uKLwX3Wz8pq3b07f9++sX06epsYDFhWVmtCQu2SJf729k9iuia4gj1/7m97c+eObPHihKlTPfBHHejPxr5Go7GmRt7ernrrLf/m5h4PD86iRXO9QkKa2rnu7wwbEc1xGvzvDRticnMl2dktEol64kT/lJSU9PRmvI1vTY08KamOzaZv3z4sLMwqO7sNb5K7eXO6QCBAj2ySW1BgHDJkSEFBQWNjo7e3d25uro2NjdFobGtr+/tnWlMjDwiwuXBh5rlz0y0szHJz286cmXb58qvvvBOYn9+3txtCSCJRlZfLdLoHvBbHNTZ2nTlTuW7dzX8+es/fBFew509trRwhVFgoCQiwEYuVSUl1+/cXvPtu0OrVYaZ1JBJlV5dOq9UhhL75JmP79iiEkMFgnDvXHyF+a2tmevokf89F2dlMqbTiwIHxb73l7+m5f/36crlcUVmpaG/XR0enTZni/s03GSNGOBoMpO5u/YwZXv7+/MmT3bduLU1JkVpalpua5Paxb1/BuXNV06ZNHzt2bGlpaUlJia2trUQiwSf++/tnqtUaoqMj+owlTCaT5szxLix8QEe1CRNcJ0xwfUSBzs6s2bP7bdqU+Yh1Hi9KdHT0E9sZ+OeuXauvrVUMH+5oMGC5ueKuLl1AAP/zzwdPnOiGT6WJELp9u7WtTRkYyKusbB0/PlAotExKqrt5s+ntt4PGjOEVFxdHR0+3tlYKBJYLFwZ/+GEIiYQsLc2mTfMUi3uSkprodLKnJ2PqVK+QEGF9fdfGjZm//FI2ejRjwYJBRiNmbU2rq2uMiHAXi1XvvhssFFrs3p1361bLsWOljo5WtrbMW7dali273NWllUiUAoGlWm2+dWtNUZHM19esslIVEyM+fbouNNSsuromN7f799/LbW2ZH32UzOHQXV3ZZ85U7tyZ8/vvZba2TCcn1sCBAkvLuw9Rjh8vq61VfPLJ3TaTERH21641HD1a2ntzhJBWa0CIpNMZ4+KqTpy4Y2PD+PLLm8eOlTk4WDk4WCGExGLlnj35770XzOczEEJ99vjY/15wBXvOjBzpNHKk06PXCQ0VhIYKjEZjbGwsj8eYNcvLx4e7ZcstDoeakZERHh7OYJiPHSuiUqk+Pk61tfIffsg+cqSksHDRli0jWlqUnZ2ar792E4ubYmK6vbyst2wZ9ttvxW+8cWnu3Da1Wr9y5VWlUj9hApPFouXnS379tYTHM9+6dcTp0+Vjx55qaHg7LEw4ZoxLZ6dmw4a7E2oymfT2dnJERASNlhUXV37xorQk61Uy2aWmbRaHY0MmI6VSl58vKS6WMhhmP/44+vjxspEjj2dkzA8JeejoGtnZbStXXtXpjFQqGd/czY1tOpG2tp7169PFYqXBgL3yitv27dkjRx4vLFyEj81qsnNnzt/f4/8G7sFeWGQymUql9n5qV1tb6+3tbWdnhxCi0Wh4z0gXF/aoUX3nUA8MDGSxbNavTxMK6SkpDba2Fghhhw8XR0aKBg5kqdXY6tWhp09Pxa9++IPE/v35zc3dEonq/iPBH+Xb2NjQ6fT8rMuW5sabm1Dqt7Vzh5Z3K3ra20+dPj11yRL/r7/OcHFhpaQ02NgwSSRkapXyQJGRorFjXbq6tKYj6X0iAwbYDRvmYGfHXL8+cvJk99OnpyKEdu/O611CV5f2/7XH/w1cwV5kDAZDpVLRaHdrWXQ63cvLy/SzXH53kG28snQfO0tLWkFBbkBAgIWFxRdf2M2cGYAQ0mhUjo4sfNBChNDBg+MRQhcv1uD/fB84iYzJpk2bJoSgy38O4MtiGL3s5Qf3bo+O/rKsTGlhYYYPQkyhkBITXzWNcvMwVCrZwcHKdCR9ToRMJuFvBRFCbDZ9yBBRn2mZSkra/797/B9AwF5kDAZDqVSy2eyKigqEUO+JmE1XsMbGri1bbiGEli9PFAot0tKaMIy0Zcstd3eOWo29/npEbm5u//6DxWK6nx9fpVIZjUYK5d7L5aqqzrffvjxzpteGDUPi4vqO4dFHYWHhoki33ksoZOQhQGVlZY2N1l1d2uHDiZpr087OQqMx9F7S2NhF6B5xUEV8kTGZTJVKVVdX19LSghAi9xppjU6na7Xazz67ERBw2M7OAiG0e/eYn38e6+PDa23t7unRiURWUqmqvp6M9zeprq7+17+2bd68WaW6VwnU642jR5+cNavf8uVB5uaU3rvGMAwhpNfrpVKpQqGQy+VJSUkYhml1fd9Q9WgQg8HAd4fPP4jr0wjrH+roUPv5/WUsIKL3iIOAPaPa21VLlyaQSFsnTYptb7/3b7q6Wu7hsX/VquS/8yaHyWTu2ZPv7n7K2zsQ/fmPHkej0ZKSJN9/f3v0aNH48TYIIYVCYTQa7e0tHRysVCq9tzfX3t5y8eKEri7yL7/8um3zoazEUw03v0q7fqmqqhqPmVisrK2V02hknU53+fJthNCZM/EnTpxoaakvLm48efLkiRN/ZGVl0WiG6mplQEDgpEmTL+U6KLU0I0ZCCGEI9WhI3UjUv3//4GBbkchy8eKEpqZuDEOXL9cWF/+lRqfT3ZusEIdhmNH4l3eC+K+m0zS9EOvp0eXktL399r0vAcPQf93jYwFVxGcUj8fYvj3q3Lmq2lpF73sDNze2uTn166+HPGKmSb1ev3///mvXrkkkEhbL7qef3k1PlyKETp8u5/EYZmbkzk71jRs1J082GY3YqFGU69erEUInT97086PY25OqqjpzclqTkuqVSl1zc7eHxyEzaoC1hW/GHaupYViQqyC9jGxvv/3gwZkTJrja2Ji9/fblNWuuODpSaTTSnj3tCxZwpVJDXZ32gw+aBg1iLlxI+/e/o+Ljfx82LM7DY0xz13GD0fjtySGvRmZeLRBUt3L37ttGoVAoFHTo0ITZs885Ou7hchmzZnn99NNo/HQMBqy8XJafL+nu1iUk1A4f7mBuTu3p0RUVSWtq5E1N3SKRJUIIw1BOjhghlJ8vwZ/Il5d3rFqVHBkpOnHizuHDE+3smBiG8CE9srPbvL25D9vjYwRjcjzTvvoqLTo67dq1OSNG3L1VuHGj6dSpO9u2RSGEVCp9aWm7jQ3T0dHKtMmdOy3z5k1iqupeGyq3YuqvF6Nzed7ffLMLf7yhUulycmq6uyV8vvn339dKpVhp6VvZ2a22tszOTjWPZ+7qSr55s1Imk/znP2KjkVJZ2WVhce7M6nyDkTX+qw+OfHiQQdd0dqO394yPiRkeF6fIz1ctW8bz9LSbOTM/JmZsVJTb5s2Zfn788HAhg2G2c2fK4MFqkUjUr9+AhoYuPz9+Y6N48+avL12K1+t5Hh6Bb7zxhru7e1iYEP//hVqtLylpFwothcJ7o9Z0d+uys++NcurqynZyYpWUtEskdwfxxTevq1Pgr+ARQv7+Nhs2pGdkNJ89O72xscvf3wZ/mNHc3F1R0YGv4+PDs7VlPnCPjxFcwZ5py5cHbdyYuX17tilg+/YVfPxxKELo0qWan37K++ST8DVrUvh85o4dUampjZ98cr2qqk7I5KXXzRnocXX1jAR/J7a8x2779k8KCjIPH87Ys6dg0SLn7Gyz7m6WTGa0tWXMnx+vUunnz/fFZ2cePdqpsrKTQiGRSGZ0utHKiqxVM/s7KXT6HrqZPr9W9OGUpKpWGzNKkVo9ICDA6pVXIhYs8DUaMTb7jtFIsbNjIoRiYopnzPDicOgrVgzNz7/S1tYWGcnAH/E5O9tOnz55xowpfn5+ptFyTMzNqfePLG9paXb/owhfXx5CvN5LnJ1Zzs593xTb2jJtbe8NuWNvb9mnCeID9/gYwT3YM83Wljlvns+5c1X4vJVyuaauTuHvz0cIffVVWkiIXUSE/UcfDfzxx9zubt3QoQ6entYSCfbx9PxL67bPGJzbILXecOKVU2mTpE0VBw8e3Lo1f+RIz+XLJ6xdG/njj7kcDlUm0wwf7lhTI580ye3y5VfXrg2/dasVw5BIZBUQwGexKGPHcnSGgC4VOp8dEOpReyYzGCF07PoARC6zsLDw8CCRyYXvvvvbq6+e7enR4fdIS5cG5OeLfXwOnjpVzmbrjEajldW9C2xhYSGLxXJ0dJRIHtCY8DGSSJQq1aPeGTwZELBn3cqVIUYjtnNnDkLot99K586925x327aod94JQgg1NHQZjRj+gtXGhkkidYS4ifs7NXsIxY78jgUjMhBCXCvU2dm5YoXDtGkCjUaDb+LoSFcq9Tqdkctl+PjwEEKBgTYymZpKxbq75VKplMFgREdPNhpt1x0TXM712bH09+pWfnG9fXKR1YwZY1577TWRKPjLL8UWFro5c7Q0mjE7O/vy5cs9PTW//jrQxob06qvnPvroHJlMHjPm7ny1MpkMH9GNx+NJpQ9oTPi4HDlS0t6utrVlHjpUJJdriNvRfwVVxGddQIBNVJTTwYNF69cP+e230vPnZ+LLw8OFFy5Ux8QU4zcPpudp5ua0onoU6XN3cwrZiBBqlKI333xTq9X+/nveqlWpAgETITRrljA3twfv54IQUqlUEkkbQkit1ggEHHt7a7lc6+dnExDAi8+dY2ORdzlP7iaonLlpBoNV+e233yOEPv88Z+JE3y1bRtXU1CDUZDAYOjs7U1Nb/f3NP/uMe+wY+cyZrsOHF+PlYxh2+/btoKAgOp3O5XLlcrnRaCTfP0fL4/D6676vv+5LRMn/X3AFew6sXBkil2v+9a8rbm4cFuvuS97PPkvdvTv/8OEJK1YE9V7Z1tY2+nfUevdOHmn1CCE07pVZPB5v167Kq1fVCQlvrlwZhhDicDRvv80tLBRLJN1xcecTEhLwpu5aLdXCgomPNGowGEaPttbpnGa8PrSW+Y5DP44Wc7l0aWtZWZler+/s1BQWSlUqfX09Va0meXoGjBs3tbXVbvz4aXPmzN68eRabzTBNh1dRUWFubu7k5IQQolKplpaWnZ2dT+T7e5rgCvYceOUVNw8PTkxMUUrKa/gSqVS1cWPmmTPTTXPtmZ4G83i8WbM2jY3+ZKAHYtBQaglCCH377bemTSwt6VwuHyHk6Og4ZAiLRGqIiSn78cceS0vz7m4lQujttwNXrAhctSq5q0t95cqVsWP5CgWaN89pwIABXV3a9evTg4L6Z2WpMjMzP/980KpVycOG/f7NN0PeeMP3P//JDgqytbKivfnmxXHjXAsKJMeOTcKPSqPRlJaWRkVFmU6Kw+HI5XIul/vkvsenAQL2HCCTSR98ELJjR86wYXfbOllYmFla0g4cKGAyqSkpDQihy5frxo511mgMPT26NWvWLFq0KD09XalUTlI7LV6cQaHQ79/k1i05iUTicCysrGiXLs1GCB05UpKQUPvee0E8HoPDIZ0926rR9OPxBO+/z6ZQKAghKyvad98NRwgNGDAgJSXF21uHzzWBEBo71gX/wfTAs7c7d+44OTn1ftrBZrNfhisY9Ad7Pvj68vl8hmnIDTMzsr8/v6hISiKR1qwJ6+jQyOUae3urxMQ6MplkZkYJCnLw9/e1tHRKSGg1MyNrtQZ/f354uLD3Jh0dSpGImpHRRadTzM2pPB7j0KEiNpve06Pj83v0+ha12qqnhzp3rk9jY721tTWHc6+vB4lEsre3z8nJYTAYbPZ/mXdcr9dnZmaGh4f3HsFbo9GIxWK8xvgCgxfNL6/Gxsa6urrIyMg+y/Pz81tbW4cOHWqatCE5OdnX17f3MPS4zs7OlJSUYcOG9ZnDso+Ghoba2tqhQ4f2XiiVSgsKCnpXGl9I8JDj5UWj0e4f46mwsFAsFkdFRfWeEqWrq8vS8gFDxHA4nJCQkLS0NLxh/sOIxWJ8DI/eyGTyA+eUeMFAwF5edDq9TzCampoaGhqGDx/euy6n1+t1Ot3DpiBycHBwdna+efPmI9LS09PT++4Lp9Fo6HT6Pzj85wME7OWF91gx/arX67Ozs8PDw00dNHFyufz+ePTm5+fHYDCys7MftoJOp+udWJxMJvuvN28vAAjYy6tPFbGmpobP5/N4vD6rSSQSGxubRxcVGhoqk8kqKysf+KmZmdn9ddGWlhZ88IIXGwTs5UUmk8lksmlChrq6Og8Pj/tXa2lpuf/xRh9UKnXIkCGlpaUPnGvv/rqoRCLRarX/tdgXAATspWa6iGm1WoVCwefz+6wgl8u7u7vvf0RxPwsLi8GDB2dkZHR3d/f5iMViKRSK3ktKSkq8vb0fOC3tCwYC9lIzXVva29t5PN79LQPz8vK8vLz+ZotBPp/v6+t748aNPtMUsdls0wA7CKGmpiaVSuXi4vJPj/55AAF7qZmecygUivsfOeANDk0DUf0dHh4eNjY2GRkZvd+vcjicjo67jSMNBkN+fn5wcDBBzXyfNS/FSYKHMVURFQoFi/WX3opVVVVVVVWDBw/+/1bkgoODDQZDUVGRaQmTySSRSD09PQihoqIiLpf7MjzewEHAXmqmwdt6enp6v0ouKSkpKysbMWLEw15/PQKZTI6IiGhoaOg93R6Px2tvb8f7gwUHBz+Wg38uQMBeaqYqolKpZDKZP/6YGxV1PCRk34YN2Y6OAyws+g5TsWpV8uXLtf+1WBqNNmTIkLy8PJlMhi/h8/kSieTWrVvBwcEvw/tlEwjYSw2/gnV1ac+eFb///g2dTieTdeTlKfbtmx0QILx//Tt3ZK2tPfjPJSXtpgFk7sdisUJCQm7evKlSqeRyeV1dXWpqqoWFRZ/JwR5dyAsAuqu84OLiqg4eLOzs1PB4DGtrOoah7m6dWKwcPFj4zTdD6XR6e3v7lCmx8+ZZikSihQuvBAfbMBgaS8sHX2Ti42fgP3R2ambPjjt8eMIjdi0SiaRS6dKlS8+fOeouQEotUhhFP/zww+zZs/9+Ic876K7yguvXj1te3hETU3TgwLgVK4KnTPGYNcsrJMQuNrbC01P5/fff799/7tYt3rBhCj7fbNOmV5KS2qqqOj/9dNDDClQqdWZmlOXLkxITa/V6rL5eER4ulEiUW7bc2ru3oKSkPTxcSKWSW1t7fvwx79Sp41nJJYP6hR75sCTA2VGr9tyyK6+6jjRpUgCJhHoXEhRk+803GV99lRYeLrSyov38c/6aNdc5HHNvby5eFI1GPn78zsGDhVOmeNy/uyf5lf7/YOBFt3NnDkLfZWW19l64YMEWoTX6fDb6cIoPlbJRaI2io6MxDJs166yl5TYMw/R6fUtLS0FBQUpKyoULF86cOfPxx0d9fX+aNet3jUZTWdlhKrOrSztlSqxUqpTLNeHhR6ZN+6OnR7t27XWEvjOjzPlwykgfx4+urBfSzTaW76Yf/BeysPhy9+48DMN6F4JhWGGhBKHvMjKaMQzT641M5rZdu3JMRS1ceGHjxoyAgBiJRNlnd0/4+/x/eYajDx6T+x+zx8dnXo5bnRCNRNyg0sYwo5EyJWzc95tTc3NzEUI6neGjj2KnTj24c+dNCoXi6ekZGRk5bty46OipZDJNr9dfunSp94vjrVtvCwQWRUXS3Ny2/v35Z85UqtWGNWvCEEI27IZ/T792Zf0PeiM52K2eSdeGeyGdrjE//wEtqvBZjnAUConJpCKEmEwzvKjQUMEnn4Tn5y/ctSu3z+5kMvX9pT0j4B7sZbRhQ/LMCMRnoanheQYjOSnPd91rCUw6iomJuXHD3WjEVqwIsLYWjB4d29nZ/OOP94ZnEghYfD4rONj36tV808LMzJbBg+8OIfrGG75vvOFLo1HwVBuMdx9g+Ds3xX6yW6Kw2hk/2GBwVKv/MtHJo+E1QBcX9iN29z9/FUSDgL0sVq9O4XLNDQasqEiqUBgnuvddwYaN4m43t7U5MplUvNXvunURM2acWbYsMDDwL63phUJhd/dN06+NjV1crnmfwXd7enQIIYxme6uiNMwTYRhpT8KwzHJXAeeii8tDb/D+jgfu7pkFVcSXxZYtw0+enBIbOzUra4Gjo3lpQ98VShsQnx9KpZIMBsONGzfq6+uHDRNiGEpLayotba+svDdATUFBAd4QHsMwhJBIZHnu3L2OKmq1Pj29Gf95xYoVS3ahA4loe1zYnotD7K1/Tak29/Pz671f7K+DVph+e9hYFo/Y3TMIAvbSYbFoGzdOSK6wu1Z4b2FqCUoose3XL0ivxygUqoODQ11dXXJygrk5+c6d2uXLL2g04srKSoWiq76+oaenJywsGCHU1NSt1xsnTHBLTKzbti3bYMCkUtUnn1z39eXh8RgwICQ1s7SMNH/vNX+5mmY78OPc3Lz2dj0+ESY+4QNeiF5v5HDoCCH89qysTNbVpVUotOjPpJlGVp082f3+3T3JL/D/BQL2Mho92vvYsZOrj0fO2oxO3EQGDH1yyvXEiROOjjYYhnp6dL/91lZXx5PJPDQaY2xss1KpU6kUjY3tjY0qhYI+cOBgJydrHx/eRx9d+/rrjMWL/WfM8Pzww2t8/q7w8CNz5/qw2fTMzBaEUHp6s6dnvyNHjpw48TmJZHXpks8XX2T7+9tcuFD97beZQqGlqRAMQ2w2fe5c7/ffvzpmzMmLF2vc3NgJCbU1NXJTUQYDhhBasiTg/t095S/04WBUqRff9u05K1devX379YED73Xr+vzzG+HhtjRazdGjd44c0SqV75mbm6tUeh+fg7Nn99uyZThC6Pr1xg8+uJqdvYBMfvE7bhEEHnK84CQS5dWrdQihPXvyR4yQkUgkmUyVmFh36VJNR8e/6HSPs2cpGJaXkyMbPNiewaCePTt93rx4kcjKy8v66NGS2NipkK5/Aq5gABAI7sEAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIBAEDAACQcAAIND/AeKFa87XM2zKAAAAAElFTkSuQmCC" /><!-- --></p>
-<p>A detailed version of the <a href="https://api.epigraphdb.org/meta/schema?graphviz=true&amp;plot=true">schema_plot</a> can be obtained from the API.</p>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    metadata <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&quot;connections&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transpose</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>          <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">meta_rel =</span> <span class="fu">flatten_chr</span>(rel)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate_at</span>(<span class="fu">vars</span>(from_node, to_node), flatten_chr) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>          <span class="fu">select</span>(meta_rel, from_node, to_node)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Joining, by = &quot;meta_rel&quot;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>meta_rel_df <span class="sc">%&gt;%</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(from_node, to_node) <span class="sc">%&gt;%</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">count =</span> <span class="fu">format</span>(count, <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>))</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 41 × 4</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    meta_rel                     count        from_node to_node       </span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                        &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;         </span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 MONDO_MAP_EFO                &quot;     2,819&quot; Disease   Efo           </span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 MONDO_MAP_UMLS               &quot;     8,247&quot; Disease   LiteratureTerm</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 OPENTARGETS_DRUG_TO_DISEASE  &quot;     2,461&quot; Drug      Disease       </span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 CPIC                         &quot;       375&quot; Drug      Gene          </span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 OPENTARGETS_DRUG_TO_TARGET   &quot;     6,534&quot; Drug      Gene          </span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 EFO_CHILD_OF                 &quot;    43,132&quot; Efo       Efo           </span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 GENE_TO_DISEASE              &quot;     5,763&quot; Gene      Disease       </span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 XQTL_MULTI_SNP_MR            &quot; 3,015,233&quot; Gene      Gwas          </span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 XQTL_SINGLE_SNP_MR_GENE_GWAS &quot; 8,449,779&quot; Gene      Gwas          </span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 GENE_TO_PROTEIN              &quot;    19,142&quot; Gene      Protein       </span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 31 more rows</span></span></code></pre></div>
 </div>
 </div>
 <div id="search-for-specific-node" class="section level2">
@@ -346,214 +376,209 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Here we show how these are done at the API level using <code>Gwas</code> nodes as an example.</p>
 <p>First we need to know what the “ID” and “name” fields are for the meta nodes using <code>GET /meta/nodes/id-name-schema</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/meta/nodes/id-name-schema&quot;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>meta_node_fields <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> <span class="cn">NULL</span>, <span class="at">mode =</span> <span class="st">&quot;raw&quot;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>meta_node_fields</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Disease</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Disease$id</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Disease$name</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Drug</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Drug$id</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Drug$name</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Efo</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Efo$id</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Efo$name</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;value&quot;</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gene</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gene$id</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ensembl_id&quot;</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gene$name</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gwas</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gwas$id</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gwas$name</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;trait&quot;</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Literature</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Literature$id</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Literature$name</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTerm</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTerm$id</span></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTerm$name</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTriple</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTriple$id</span></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTriple$name</span></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Pathway</span></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Pathway$id</span></span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Pathway$name</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Protein</span></span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Protein$id</span></span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;uniprot_id&quot;</span></span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Protein$name</span></span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;uniprot_id&quot;</span></span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Tissue</span></span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Tissue$id</span></span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Tissue$name</span></span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Variant</span></span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Variant$id</span></span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Variant$name</span></span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/meta/nodes/id-name-schema&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>meta_node_fields <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> <span class="cn">NULL</span>, <span class="at">mode =</span> <span class="st">&quot;raw&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>meta_node_fields</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Disease</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Disease$id</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Disease$name</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Drug</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Drug$id</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Drug$name</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;label&quot;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Efo</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Efo$id</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Efo$name</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;value&quot;</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gene</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gene$id</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ensembl_id&quot;</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gene$name</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gwas</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gwas$id</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Gwas$name</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;trait&quot;</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Literature</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Literature$id</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Literature$name</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTerm</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTerm$id</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTerm$name</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTriple</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTriple$id</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LiteratureTriple$name</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Pathway</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Pathway$id</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Pathway$name</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Protein</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Protein$id</span></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;uniprot_id&quot;</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Protein$name</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;uniprot_id&quot;</span></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Tissue</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Tissue$id</span></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;id&quot;</span></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Tissue$name</span></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Variant</span></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Variant$id</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Variant$name</span></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;</span></span></code></pre></div>
 </div>
 <div id="fuzzy-matching" class="section level2">
 <h2>Fuzzy matching</h2>
 <p>Here we search for nodes can contain “body mass index” in their traits.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">&quot;body mass index&quot;</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">&quot;body mass index&quot;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/meta/nodes/Gwas/search&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> name)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> params, <span class="at">mode =</span> <span class="st">&quot;table&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 × 18</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    node.note        node._name  node.year node.mr node.author node.sex node.pmid</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;    </span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Dominance model… Body mass … 2016.0    0       Wood        Males a… 26961502…</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Females  25673413…</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 &lt;NA&gt;             Body mass … 2013.0    1       Randall JC  Females  23754948…</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 &lt;NA&gt;             Body mass … 2017.0    1       Akiyama M   &lt;NA&gt;     28892062…</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 &lt;NA&gt;             Body mass … 2018.0    1       Hoffmann TJ &lt;NA&gt;     30108127…</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 &lt;NA&gt;             Body mass … 2019.0    1       Ishigaki K  Males    28892062…</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Males a… 25673413…</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Males a… 25673413…</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Males    25673413…</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 &lt;NA&gt;             Body mass … 2019.0    1       Ishigaki K  Males a… 28892062…</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 11 more variables: node.population &lt;chr&gt;, node.sample_size &lt;chr&gt;,</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.nsnp &lt;chr&gt;, node.build &lt;chr&gt;, node.trait &lt;chr&gt;, node._source &lt;list&gt;,</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.id &lt;chr&gt;, node._id &lt;chr&gt;, node.subcategory &lt;chr&gt;, node.category &lt;chr&gt;,</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.sd &lt;chr&gt;</span></span></code></pre></div>
+</div>
+<div id="exact-matching" class="section level2">
+<h2>Exact matching</h2>
+<p>Similarly, we can exact match a specific node by its ID.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">&quot;ieu-a-2&quot;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/meta/nodes/Gwas/search&quot;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> name)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">id =</span> id)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> params, <span class="at">mode =</span> <span class="st">&quot;table&quot;</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 x 18</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    node.note        node._name  node.year node.mr node.author node.sex node.pmid</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;    </span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Dominance model… Body mass … 2016.0    0       Wood        Males a… 26961502…</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Females  25673413…</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 &lt;NA&gt;             Body mass … 2013.0    1       Randall JC  Females  23754948…</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 &lt;NA&gt;             Body mass … 2017.0    1       Akiyama M   &lt;NA&gt;     28892062…</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 &lt;NA&gt;             Body mass … 2018.0    1       Hoffmann TJ &lt;NA&gt;     30108127…</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 &lt;NA&gt;             Body mass … 2019.0    1       Ishigaki K  Males    28892062…</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Males a… 25673413…</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Males a… 25673413…</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 &lt;NA&gt;             Body mass … 2015.0    1       Locke AE    Males    25673413…</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 &lt;NA&gt;             Body mass … 2019.0    1       Ishigaki K  Males a… 28892062…</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 11 more variables: node.population &lt;chr&gt;, node.sample_size &lt;chr&gt;,</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.nsnp &lt;chr&gt;, node.build &lt;chr&gt;, node.trait &lt;chr&gt;, node._source &lt;list&gt;,</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.id &lt;chr&gt;, node._id &lt;chr&gt;, node.subcategory &lt;chr&gt;, node.category &lt;chr&gt;,</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.sd &lt;chr&gt;</span></span></code></pre></div>
-</div>
-<div id="exact-matching" class="section level2">
-<h2>Exact matching</h2>
-<p>Similarly, we can exact match a specific node by its ID.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">&quot;ieu-a-2&quot;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/meta/nodes/Gwas/search&quot;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">id =</span> id)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> params, <span class="at">mode =</span> <span class="st">&quot;table&quot;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 x 17</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   node._name  node.year node.mr node.author node.sex   node.pmid node.population</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;          </span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Body mass … 2015.0    1       Locke AE    Males and… 25673413… Mixed          </span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 10 more variables: node.sd &lt;chr&gt;, node.sample_size &lt;chr&gt;,</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.nsnp &lt;chr&gt;, node.build &lt;chr&gt;, node.trait &lt;chr&gt;, node._source &lt;list&gt;,</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.id &lt;chr&gt;, node._id &lt;chr&gt;, node.subcategory &lt;chr&gt;, node.category &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 17</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   node._name  node.year node.mr node.author node.sex   node.pmid node.population</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;          </span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Body mass … 2015.0    1       Locke AE    Males and… 25673413… Mixed          </span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 10 more variables: node.sd &lt;chr&gt;, node.sample_size &lt;chr&gt;,</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.nsnp &lt;chr&gt;, node.build &lt;chr&gt;, node.trait &lt;chr&gt;, node._source &lt;list&gt;,</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   node.id &lt;chr&gt;, node._id &lt;chr&gt;, node.subcategory &lt;chr&gt;, node.category &lt;chr&gt;</span></span></code></pre></div>
 </div>
 <div id="cypher-advanced" class="section level2">
 <h2>Cypher (advanced)</h2>
 <p>Advanced users that are familiar with Neo4j Cypher can query the database using Cypher directly.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="st">    MATCH (exposure:Gwas)-[mr:MR]-&gt;(outcome:Gwas)</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE exposure.trait = &#39;Body mass index&#39;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">    RETURN exposure, outcome, mr LIMIT 2</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/cypher&quot;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">query =</span> query)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co"> this is a POST request</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> params, <span class="at">method =</span> <span class="st">&quot;POST&quot;</span>,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;table&quot;</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 0 x 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">    MATCH (exposure:Gwas)-[mr:MR]-&gt;(outcome:Gwas)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE exposure.trait = &#39;Body mass index&#39;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">    RETURN exposure, outcome, mr LIMIT 2</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>endpoint <span class="ot">&lt;-</span> <span class="st">&quot;/cypher&quot;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">query =</span> query)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co"> this is a POST request</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">query_epigraphdb</span>(</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">route =</span> endpoint, <span class="at">params =</span> params, <span class="at">method =</span> <span class="st">&quot;POST&quot;</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;table&quot;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 0 × 0</span></span></code></pre></div>
 </div>
 <div id="sessioninfo" class="section level2">
 <h2><code>sessionInfo</code></h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.0.4 (2021-02-15)</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Manjaro Linux</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /usr/lib/libblas.so.3.9.0</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /usr/lib/liblapack.so.3.9.0</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; locale:</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] LC_CTYPE=en_GB.UTF-8       LC_NUMERIC=C              </span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] LC_TIME=en_GB.UTF-8        LC_COLLATE=C              </span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] LC_MONETARY=en_GB.UTF-8    LC_MESSAGES=en_GB.UTF-8   </span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] LC_PAPER=en_GB.UTF-8       LC_NAME=C                 </span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] LC_MEASUREMENT=en_GB.UTF-8 LC_IDENTIFICATION=C       </span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attached base packages:</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; other attached packages:</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] ggplot2_3.3.2    epigraphdb_0.2.2 igraph_1.2.6     glue_1.4.2      </span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] purrr_0.3.4      dplyr_1.0.2      magrittr_2.0.1  </span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] pillar_1.5.1      compiler_4.0.4    highr_0.8         tools_4.0.4      </span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] digest_0.6.27     gtable_0.3.0      jsonlite_1.7.2    evaluate_0.14    </span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] lifecycle_1.0.0   tibble_3.1.0      debugme_1.1.0     pkgconfig_2.0.3  </span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] rlang_0.4.10      cli_2.3.1         rstudioapi_0.13   curl_4.3         </span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] yaml_2.2.1        xfun_0.21         withr_2.4.1       stringr_1.4.0    </span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] httr_1.4.2        knitr_1.31        generics_0.1.0    vctrs_0.3.6      </span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] gtools_3.8.2      grid_4.0.4        tidyselect_1.1.0  R6_2.5.0         </span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [29] fansi_0.4.2       rmarkdown_2.1     farver_2.1.0      scales_1.1.1     </span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [33] ps_1.6.0          ellipsis_0.3.1    htmltools_0.5.1.1 assertthat_0.2.1 </span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] colorspace_2.0-0  labeling_0.4.2    utf8_1.2.1        stringi_1.5.3    </span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [41] munsell_0.5.0     crayon_1.4.1</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.1.2 (2021-11-01)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Ubuntu 20.04.3 LTS</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; locale:</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    </span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 </span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attached base packages:</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; other attached packages:</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] igraph_1.2.11    purrr_0.3.4      magrittr_2.0.1   epigraphdb_0.2.3</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] dplyr_1.0.7     </span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] knitr_1.37       tidyselect_1.1.1 R6_2.5.1         rlang_0.4.12    </span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] fansi_1.0.0      stringr_1.4.0    httr_1.4.2       tools_4.1.2     </span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] xfun_0.29        utf8_1.2.2       cli_3.1.0        DBI_1.1.2       </span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] ellipsis_0.3.2   assertthat_0.2.1 tibble_3.1.6     lifecycle_1.0.1 </span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] crayon_1.4.2     vctrs_0.3.8      curl_4.3.2       glue_1.6.0      </span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] evaluate_0.14    stringi_1.7.6    compiler_4.1.2   pillar_1.6.4    </span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] generics_0.1.1   jsonlite_1.7.2   pkgconfig_2.0.3</span></span></code></pre></div>
 </div>
 
 

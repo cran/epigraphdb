@@ -1,3 +1,13 @@
+# epigraphdb 0.2.3 (2022-01-14)
+
+- Error handling logics have been overhauled.
+  - Now it is easier to see the context when a request function fails
+- Vignettes on case studies of using EpiGraphDB functionalities have been moved to [EpiGraphDB's platform documentation](https://docs.epigraphdb.org). This is to make the package building process faster and less error prone. Specifically, it involves these vignette articles:
+  - [Case 1 pleiotropy](https://docs.epigraphdb.org/r-package/case-1-pleiotropy/)
+  - [Case 2 alternative drug target](https://docs.epigraphdb.org/r-package/case-2-alt-drug-target/)
+  - [Case 3 literature triangulation](https://docs.epigraphdb.org/r-package/case-3-literature-triangulation/)
+- (For developers) Added docker for package development in a portable and consistent development environment.
+
 # epigraphdb 0.2.2 (2021-03-21)
 
 - Switch to github actions for building the package documentation site.

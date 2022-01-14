@@ -1,6 +1,6 @@
 Package: epigraphdb
 Title: Interface Package for the 'EpiGraphDB' Platform
-Version: 0.2.2
+Version: 0.2.3
 Authors@R: c(
     person("Yi", "Liu", email = "yi6240.liu@bristol.ac.uk",
       role = c("cre", "aut")
@@ -28,12 +28,12 @@ Suggests: testthat, roxygen2, knitr, rmarkdown, spelling, devtools,
         usethis, pkgdown, styler, lintr, covr, igraph, gtools, stringr,
         dplyr, ggplot2
 Encoding: UTF-8
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.2
 Imports: magrittr, tibble, httr, glue, purrr, jsonlite
 VignetteBuilder: knitr
 Language: en-GB
 NeedsCompilation: no
-Packaged: 2021-03-29 11:16:42 UTC; yiliu
+Packaged: 2022-01-14 19:42:08 UTC; root
 Author: Yi Liu [cre, aut],
   Valeriia Haberland [aut],
   Marina Vabistsevits [aut],
@@ -41,4 +41,4 @@ Author: Yi Liu [cre, aut],
   MRC IEU [cph]
 Maintainer: Yi Liu <yi6240.liu@bristol.ac.uk>
 Repository: CRAN
-Date/Publication: 2021-03-29 12:20:02 UTC
+Date/Publication: 2022-01-14 19:52:45 UTC
